@@ -11,7 +11,7 @@ const SideContent = () => {
     pt={3}
     position={"fixed"}>
       <Typography>
-        
+        kanan
       </Typography>
     </Box>
   )

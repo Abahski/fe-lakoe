@@ -7,6 +7,11 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import Search from './components/Search';
+import ButtonCheckKurir from './components/ButtonCheckKurir';
+import ButtonCheckUrutkan from './components/ButtonCheckUrutkan';
+import CardPesanan from './CardPesanan/CardPesanan';
+
 
 
 const DaftarPesanan = () => {
@@ -16,11 +21,11 @@ const DaftarPesanan = () => {
         setValue(newValue);
     };
     return (
-        <Box bgcolor={"#ffffff"} m={3} borderRadius={5}>
+        <Box p={3} bgcolor={"#ffffff"} my={3} borderRadius={5}>
             <Typography fontWeight={"bold"}>
                 Daftar Pesanan
             </Typography>
-            <Box sx={{ maxWidth: { xs: 320, sm: 480 }, bgcolor: 'background.paper' }} fontWeight={"bold"}>
+            <Box sx={{ bgcolor: 'background.paper' }} fontWeight={"bold"}>
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -37,13 +42,18 @@ const DaftarPesanan = () => {
                     <Tab label="Pesanan Selesai" />
                     <Tab label="Dibatalkan" />
                 </Tabs>
-                {value === 0 ? "ini adalah Page Semua"
-                    : value === 1 ? "ini adalah page Belum Pesan"
-                        : value === 2 ? "ini adalah page Pesanan Baru"
-                            : value === 3 ? "ini adalah page Siap Dikirim"
-                                : value === 4 ? "ini adalah page Dalam Pengiriman"
-                                    : value === 5 ? "ini adalah page Pesanan Selesai"
-                                        : value === 6 ? "ini adalah page Dibatalkan"
+                <Box display={"flex"} gap={2}>
+                    <Search />
+                    <ButtonCheckKurir />
+                    <ButtonCheckUrutkan />
+                </Box>
+                {value === 0 ? <CardPesanan side={value} />
+                    : value === 1 ? <CardPesanan side={value} />
+                        : value === 2 ? <CardPesanan side={value} />
+                            : value === 3 ? <CardPesanan side={value} />
+                                : value === 4 ? <CardPesanan side={value} />
+                                    : value === 5 ? <CardPesanan side={value} />
+                                        : value === 6 ? <CardPesanan side={value} />
                                             : ''
                 }
             </Box>

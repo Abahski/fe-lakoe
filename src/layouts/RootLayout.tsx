@@ -1,18 +1,19 @@
 import { Box } from '@mui/material'
 import Sidebar from './components/sidebar'
 import SideContent from './components/sideContent'
-import DaftarPesanan from '../Pesanan1/DaftarPesanan'
+import { Outlet } from 'react-router-dom'
+
 const RootLayout = () => {
     return (
         <>
             <Box sx={{ display: "flex", height: "100vh", }} gap={2}>
-                <Box flex={1} height={"100vh"} bgcolor={'#ffffff'}>
+                <Box flex={1}>
                     <Sidebar />
                 </Box>
-                <Box flex={2.5} sx={{ overflowY: "auto" }} bgcolor={'#ffffff'} my={1}>
-                    <DaftarPesanan />
+                <Box flex={3.5}>
+                    <Outlet />
                 </Box>
-                <Box flex={1.5} bgcolor={'#ffffff'}>
+                <Box flex={1.5}>
                     <SideContent />
                 </Box>
             </Box>

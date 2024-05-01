@@ -1,5 +1,5 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-import { Box, MenuItem, Tab, TextField, Typography } from '@mui/material';
+import { Box, Checkbox, Tab, Typography } from '@mui/material';
 import React from 'react'
 import CardProduk from './content';
 import ContentFilter from './contentFilter';
@@ -12,7 +12,15 @@ const Tabs = () => {
         console.log(event, newValue)
     };
     // close tab
+    // all selected
+        const [selectAllChecked, setSelectAllChecked] = React.useState(false);
+        const handleSelectAllChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+            const checked = event.target.checked
+            setSelectAllChecked(checked)
+        }
+    // close selected
 
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     return (
         <Box>
             <Box sx={{ width: '100%', typography: 'body2' }}>
@@ -29,14 +37,19 @@ const Tabs = () => {
                     {/* endFilter */}
                     <Box display={'flex'}>
                         {/* quantity */}
-                        <Box ml={3.5} flex={4.3}>
-                            <Typography>
-                                5 Produk
-                            </Typography>
-                        </Box>
-                        <Box ml={28} flex={2} justifyContent={"flex-end"}>
-                            Pilih Semua
-                        </Box>
+                            <Box ml={3.5} flex={4.3}>
+                                <Typography>
+                                    5 Produk
+                                </Typography>
+                            </Box>
+                            <Box ml={28} flex={2} justifyContent={"flex-end"}>
+                                Pilih Semua
+                                <Checkbox
+                                    {...label}
+                                    checked={selectAllChecked}
+                                    onChange={handleSelectAllChange}
+                                />
+                            </Box>
                         {/* end quantity */}
                     </Box>
                     <TabPanel value="1">

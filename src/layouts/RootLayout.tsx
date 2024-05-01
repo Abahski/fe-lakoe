@@ -9,7 +9,15 @@ const RootLayout = () => {
                 <Box flex={1}   height={"100vh"} bgcolor={'#ffffff'}>
                     <Sidebar />
                 </Box>
-                <Box flex={3.5} sx={{overflowY: "auto"}} my={1}>
+                <Box flex={3.5} sx={{
+                        overflowY: "auto",
+                        scrollbarWidth: "none", 
+                        "-ms-overflow-style": "none", 
+                        "&::-webkit-scrollbar": {
+                            display: "none", 
+                        }, 
+                    }} 
+                    my={1}>
                     <Outlet/>
                 </Box>
                 <Box flex={1.5} bgcolor={'#ffffff'}>

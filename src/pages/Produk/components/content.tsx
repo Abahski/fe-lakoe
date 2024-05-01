@@ -48,7 +48,8 @@ const CardProduk = () => {
                                     <Box flex={0.2} display={'flex'}>
                                         {/* Option */}
                                             <Box>
-                                                <Checkbox {...label} defaultChecked sx={{ marginBottom: "109px"}} />
+                                                <Checkbox {...label} 
+                                                    sx={{ marginBottom: "109px"}} />
                                             </Box>
                                         <Box>
                                             {/* Toggle */}

@@ -20,9 +20,9 @@ const Sidebar = () => {
       <Typography display={'flex'} gap={1} sx={{fontWeight: '500'}}>
       <MdOutlinePentagon size={20} /> Dashboard
       </Typography>
-      <Typography display={'flex'} gap={1} sx={{fontWeight: '500'}}>
-      <IoMdCube size={20}/>  Produk
-      </Typography>
+        <Typography display={'flex'} gap={1} sx={{fontWeight: '500'}}>
+        <IoMdCube size={20}/>  Produk
+        </Typography>
       <Typography display={'flex'} gap={1} sx={{fontWeight: '500'}}>
       <LiaShoppingBagSolid size={20}/> Pesanan
       </Typography>

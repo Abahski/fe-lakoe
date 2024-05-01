@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
 import Sidebar from './components/sidebar'
 import SideContent from './components/sideContent'
+import { Outlet } from 'react-router-dom'
 const RootLayout = () => {
     return (
         <>
@@ -8,8 +9,8 @@ const RootLayout = () => {
                 <Box flex={1}   height={"100vh"} bgcolor={'#ffffff'}>
                     <Sidebar />
                 </Box>
-                <Box flex={2.5} sx={{overflowY: "auto"}} bgcolor={'#ffffff'} my={1}>
-                    Content
+                <Box flex={3.5} sx={{overflowY: "auto"}} my={1}>
+                    <Outlet/>
                 </Box>
                 <Box flex={1.5} bgcolor={'#ffffff'}>
                     <SideContent  />

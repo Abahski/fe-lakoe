@@ -14,7 +14,6 @@ const Sidebar = () => {
       pt={5}
       position={"fixed"}
       
-      
       >
       <Box display={'flex'} flexDirection={'column'} gap={2} >
       <Typography display={'flex'} gap={1} sx={{fontWeight: '500'}}>

@@ -4,7 +4,8 @@ import Home from "./Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Produk from "./pages/Produk";
 import FormProduk from "./pages/FormProduk";
-import FesyenStore from "./pages/setting";
+import FesyenStore from "./pages/setting";import ContentNotFound from './pages/Produk/components/contentNotFound'
+
 
 const App = () => {
   return (

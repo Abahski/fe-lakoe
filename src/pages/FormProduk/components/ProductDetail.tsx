@@ -1,9 +1,28 @@
 import { Box, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
+import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 
 const ProductDetail = () => {
   const [description, setDescription] = useState("");
+  const [imagePreview, setImagePreview] = useState(new Array(5).fill(null));
+
+  const handleImageUpload = (
+    index: number,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = event.target.files?.[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const newImagePreview = [...imagePreview];
+      newImagePreview[index] = reader.result;
+      setImagePreview(newImagePreview);
+    };
+
+    if (files) {
+      reader.readAsDataURL(files);
+    }
+  };
 
   const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.target.value);
@@ -114,91 +133,55 @@ const ProductDetail = () => {
               justifyContent: "space-between",
             }}
           >
-            <Box
-              sx={{
-                border: "1px solid",
-                borderColor: "#b1b1b1",
-                borderRadius: "8px",
-                width: "130px",
-                height: "130px",
-                borderStyle: "dashed",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column"
-              }}
-            >
-              <AddPhotoAlternateOutlinedIcon sx={{color: "#909090"}}/>
-              <Typography sx={{color: "#909090", fontWeight: 400, fontSize: "14px"}}>Foto Utama</Typography>
-            </Box>
-            <Box
-              sx={{
-                border: "1px solid",
-                borderColor: "#b1b1b1",
-                borderRadius: "8px",
-                width: "130px",
-                height: "130px",
-                borderStyle: "dashed",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column"
-              }}
-            >
-              <AddPhotoAlternateOutlinedIcon sx={{color: "#909090"}}/>
-              <Typography sx={{color: "#909090", fontWeight: 400, fontSize: "14px"}}>Foto 2</Typography>
-            </Box>
-            <Box
-              sx={{
-                border: "1px solid",
-                borderColor: "#b1b1b1",
-                borderRadius: "8px",
-                width: "130px",
-                height: "130px",
-                borderStyle: "dashed",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column"
-              }}
-            >
-              <AddPhotoAlternateOutlinedIcon sx={{color: "#909090"}}/>
-              <Typography sx={{color: "#909090", fontWeight: 400, fontSize: "14px"}}>Foto 3</Typography>
-            </Box>
-            <Box
-              sx={{
-                border: "1px solid",
-                borderColor: "#b1b1b1",
-                borderRadius: "8px",
-                width: "130px",
-                height: "130px",
-                borderStyle: "dashed",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column"
-              }}
-            >
-              <AddPhotoAlternateOutlinedIcon sx={{color: "#909090"}}/>
-              <Typography sx={{color: "#909090", fontWeight: 400, fontSize: "14px"}}>Foto 4</Typography>
-            </Box>
-            <Box
-              sx={{
-                border: "1px solid",
-                borderColor: "#b1b1b1",
-                borderRadius: "8px",
-                width: "130px",
-                height: "130px",
-                borderStyle: "dashed",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column"
-              }}
-            >
-              <AddPhotoAlternateOutlinedIcon sx={{color: "#909090"}}/>
-              <Typography sx={{color: "#909090", fontWeight: 400, fontSize: "14px"}}>Foto 5</Typography>
-            </Box>
+            {[...Array(5)].map((_, index) => (
+              <label key={index}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={(event) => handleImageUpload(index, event)}
+                />
+                <Box
+                  sx={{
+                    border: "1px dashed #b1b1b1",
+                    borderRadius: "8px",
+                    width: "130px",
+                    height: "130px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  {imagePreview[index] ? (
+                    <img
+                      src={imagePreview[index]}
+                      alt={`Preview Foto ${index + 1}`}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : (
+                    <>
+                      <AddPhotoAlternateOutlinedIcon
+                        sx={{ color: "#909090" }}
+                      />
+                      <Typography
+                        sx={{
+                          color: "#909090",
+                          fontWeight: 400,
+                          fontSize: "14px",
+                        }}
+                      >
+                        Foto {index + 1}
+                      </Typography>
+                    </>
+                  )}
+                </Box>
+              </label>
+            ))}
           </Box>
         </Box>
       </Box>

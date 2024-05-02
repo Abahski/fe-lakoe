@@ -3,6 +3,10 @@ import ProductForm from "./components/ProductForm";
 import ProductDetail from "./components/ProductDetail";
 import { Box } from "@mui/material";
 import VariantProduk from "./components/VariantProduk";
+import ProductPrice from "./components/ProductPrice";
+import ProductManagement from "./components/ProductManagement";
+import WeightShippingProduct from "./components/WeightShippingProduct";
+import ButtonSubmit from "./components/Button";
 
 const FormProduk = () => {
   return (
@@ -19,6 +23,10 @@ const FormProduk = () => {
       <ProductForm />
       <ProductDetail />
       <VariantProduk />
+      <ProductPrice />
+      <ProductManagement />
+      <WeightShippingProduct />
+      <ButtonSubmit />
     </Box>
   );
 };

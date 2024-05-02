@@ -1,11 +1,11 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { MenuItem } from "@mui/material";
 
-function ProductPageField(props) {
+function ProductPageField(props: TextFieldProps) {
   return (
     <TextField
       {...props}
@@ -39,14 +39,21 @@ function ProductPageField(props) {
 const ProductForm = () => {
   const [pages, setPages] = React.useState("");
   const [selectedCategory, selectedCategorySet] = React.useState("");
+  const [textValue, setTextValue] = React.useState("");
+  const [error, setError] = React.useState(false)
 
-  const handlePageChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const handlePageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPages(e.currentTarget.value);
   };
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     selectedCategorySet(e.target.value);
   };
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setTextValue(e.target.value);
+    setError(e.target.value==="")
+  }
 
   return (
     <Box>
@@ -101,6 +108,10 @@ const ProductForm = () => {
               </Typography>
               <TextField
                 fullWidth
+                error={error}
+                value={textValue}
+                onChange={handleTextChange}
+                helperText={error?"Nama produk tidak boleh kosong":""}
                 placeholder="Masukkan nama produk"
                 InputProps={{
                   sx: {

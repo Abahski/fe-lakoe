@@ -57,8 +57,8 @@ const ContentFilter: React.FC<{}> = () => {
             </Box>
 
         </Box>
-        {/* End urutan */}
-    </Box>
+        
+   
   );
 };
 

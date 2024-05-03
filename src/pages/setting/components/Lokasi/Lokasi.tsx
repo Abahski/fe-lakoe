@@ -6,7 +6,6 @@ import ButtonTombolLokasi from "./ModalTambahLokasi";
 import ModalDelete from "./ModalDelete";
 import ButtonTombolLEdit from "./ModalEdit";
 import LokasiCard from "./components/LokasiCard";
-r
 
 const Lokasi = () => {
   return (

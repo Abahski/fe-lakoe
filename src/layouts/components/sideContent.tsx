@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import React from 'react'
+
 
 const SideContent = () => {
   return (
@@ -7,11 +7,10 @@ const SideContent = () => {
       flexDirection={'column'}
       justifyContent={'space-between'}
       height={'100vh'}
-      pl={2}
-      width={"30%"}
-      bgcolor={"#ffffff"}
-      pt={3}
-      position={"fixed"}>
+      position={"fixed"}
+      py={4}
+      pl={4}
+    >
       <Typography>
         kanan
       </Typography>

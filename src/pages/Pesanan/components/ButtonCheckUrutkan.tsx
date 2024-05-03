@@ -21,6 +21,7 @@ const ButtonCheckUrutkan = () => {
             id="checkboxes-tags-demo"
             options={Urutkan}
             disableCloseOnSelect
+            size='small'
             getOptionLabel={(option) => option.title}
             renderOption={(props, option, { selected }) => (
                 <li {...props}>

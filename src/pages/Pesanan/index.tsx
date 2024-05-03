@@ -11,6 +11,7 @@ import Search from './components/Search';
 import ButtonCheckKurir from './components/ButtonCheckKurir';
 import ButtonCheckUrutkan from './components/ButtonCheckUrutkan';
 import CardPesanan from './CardPesanan/CardPesanan';
+import Count from './components/Count';
 
 
 
@@ -21,11 +22,13 @@ const DaftarPesanan = () => {
         setValue(newValue);
     };
     return (
-        <Box p={3} bgcolor={"#ffffff"} my={3} borderRadius={5}>
-            <Typography fontWeight={"bold"}>
-                Daftar Pesanan
-            </Typography>
-            <Box sx={{ bgcolor: 'background.paper' }} fontWeight={"bold"}>
+        <Box display={"flex"} width={750} py={4} flexDirection={"column"} alignItems={"center"} justifyContent={"center"} bgcolor={"#ffffff"} my={3} borderRadius={5}>
+            <Box display={"flex"} justifySelf={"start"} pl={5} width={"100%"}>
+                <Typography fontWeight={"bold"}>
+                    Daftar Pesanan
+                </Typography>
+            </Box>
+            <Box sx={{ bgcolor: 'background.paper', width: "100%", px: 3 }} fontWeight={"bold"}>
                 <Tabs
                     value={value}
                     onChange={handleChange}
@@ -33,16 +36,17 @@ const DaftarPesanan = () => {
                     scrollButtons
                     allowScrollButtonsMobile
                     aria-label="scrollable force tabs example"
+
                 >
-                    <Tab label="Semua" />
-                    <Tab label="Belum Dibayar" />
-                    <Tab label="Pesanan Baru" />
-                    <Tab label="Siap Dikirim" />
-                    <Tab label="Dalam Pengiriman" />
-                    <Tab label="Pesanan Selesai" />
-                    <Tab label="Dibatalkan" />
+                    <Tab style={{ fontSize: 12, fontWeight: "bold", color: "black" }} label="Semua" />
+                    <Tab icon={<Count count={2} />} style={{ fontSize: 12, fontWeight: "bold", color: "black" }} iconPosition='start' label="Belum Dibayar" />
+                    <Tab icon={<Count count={2} />} style={{ fontSize: 12, fontWeight: "bold", color: "black" }} iconPosition='start' label="Pesanan Baru" />
+                    <Tab icon={<Count count={5} />} style={{ fontSize: 12, fontWeight: "bold", color: "black" }} iconPosition='start' label="Siap Dikirim" />
+                    <Tab icon={<Count count={2} />} style={{ fontSize: 12, fontWeight: "bold", color: "black" }} iconPosition='start' label="Dalam Pengiriman" />
+                    <Tab icon={<Count count={2} />} style={{ fontSize: 12, fontWeight: "bold", color: "black" }} iconPosition='start' label="Pesanan Selesai" />
+                    <Tab icon={<Count count={2} />} style={{ fontSize: 12, fontWeight: "bold", color: "black" }} iconPosition='start' label="Dibatalkan" />
                 </Tabs>
-                <Box display={"flex"} gap={2}>
+                <Box display={"flex"} py={1} alignItems={"center"} justifyContent={"space-between"} gap={2}>
                     <Search />
                     <ButtonCheckKurir />
                     <ButtonCheckUrutkan />

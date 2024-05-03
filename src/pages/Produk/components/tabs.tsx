@@ -1,16 +1,67 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-import { Box, MenuItem, Tab, TextField, Typography } from '@mui/material';
+import { Box, Checkbox, MenuItem, Tab, TextField, Typography } from '@mui/material';
 import React from 'react'
 import CardProduk from './content';
 import ContentFilter from './contentFilter';
+import ContentAktif from './contentActive';
+import ContentNonActive from './contentNonActive';
+
+const items: any[] = [
+    {
+        id: 1,
+        image: "https://i.pinimg.com/736x/e9/b2/30/e9b2305bcbfc0920a9c4718050d7f62d.jpg",
+        merek: "CREWNECK BASIC",
+        warna: "BLACK",
+        tipe: "sweater dawduh os",
+        sku: "0219AKD192",
+        varian: "4 varian",
+        status: "active",
+        stok: 20,
+        jumlah: 1,
+        harga: "190.000"
+    },
+    {
+        id: 2,
+        image: "https://i.pinimg.com/736x/e9/b2/30/e9b2305bcbfc0920a9c4718050d7f62d.jpg",
+        merek: "CREWNECK BASIC",
+        warna: "BLACK",
+        tipe: "sweater dawduh os",
+        sku: "0219AKD192",
+        varian: "4 varian",
+        status: "active",
+        stok: 20,
+        jumlah: 1,
+        harga: "190.000"
+    },
+    {
+        id: 3,
+        image: "https://i.pinimg.com/736x/e9/b2/30/e9b2305bcbfc0920a9c4718050d7f62d.jpg",
+        merek: "CREWNECK BASIC",
+        warna: "BLACK",
+        tipe: "sweater dawduh os",
+        sku: "0219AKD192",
+        varian: "4 varian",
+        status: "non-active",
+        stok: 20,
+        jumlah: 1,
+        harga: "190.000"
+    },
+
+];
+
+
 
 const Tabs = () => {
+
     // open tab
     const [value, setValue] = React.useState('1');
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
         console.log(event, newValue)
     };
+
+    const filterActive = items.filter(item => item.status === "active");
+    const filterNonActive = items.filter(item => item.status === "non-active");
     // close tab
 
     return (
@@ -24,31 +75,29 @@ const Tabs = () => {
                             <Tab label="Nonaktif" value="3" />
                         </TabList>
                     </Box>
-                    {/* filter */}
-                        <ContentFilter />
-                    {/* endFilter */}
-                    <Box display={'flex'}>
-                        {/* quantity */}
-                        <Box ml={3.5} flex={4.3}>
-                            <Typography>
-                                5 Produk
-                            </Typography>
-                        </Box>
-                        <Box ml={28} flex={2} justifyContent={"flex-end"}>
-                            Pilih Semua
-                        </Box>
-                        {/* end quantity */}
-                    </Box>
+                    <ContentFilter />
                     <TabPanel value="1">
-                        {/* content */}
-                            <CardProduk/>
-                        {/* end-content */}
+                        <CardProduk
+                            items={items}
+                        />
                     </TabPanel>
                     <TabPanel value="2">
-                        Content Aktif
+                        {filterActive.length > 0 ? (
+                            <CardProduk
+                                items={filterActive}
+                            />
+                        ) : (
+                            <ContentNonActive />
+                        )}
                     </TabPanel>
                     <TabPanel value="3">
-                        Content Nonaktif
+                        {filterNonActive.length > 0 ? (
+                            <CardProduk
+                                items={filterNonActive}
+                            />
+                        ) : (
+                            <ContentAktif />
+                        )}
                     </TabPanel>
                 </TabContext>
             </Box>

@@ -7,9 +7,9 @@ const StatusPesanan = ({ NoResi, StatusPesanan, tracking }: any) => {
             <Box>
                 <Box display={"flex"} justifyContent={"start"}>
                     <Typography fontSize={13} fontWeight={"bold"} borderRadius={2} py={0.5} px={1} bgcolor={StatusPesanan === "Belum Dibayar" ? "#ffa733" : StatusPesanan === "Pesanan Baru" ? "green" : StatusPesanan === "Siap Dikirim" ? "blue" : StatusPesanan === "Dalam Pengiriman" ? "#ffa733" :
-                        StatusPesanan === "Pesanan Selesai" ? "grey" : StatusPesanan === "Dibatalkan" ? "red" : ""
+                        StatusPesanan === "Pesanan Selesai" ? "#e6e6e6" : StatusPesanan === "Dibatalkan" ? "red" : ""
                     }
-                        color={StatusPesanan === "Belum Dibayar" && "Pesanan Selesai" ? "" : "white"}
+                        color={StatusPesanan === "Belum Dibayar" ? "" : StatusPesanan === "Pesanan Selesai" ? "" : "white"}
                     >{StatusPesanan}</Typography>
                 </Box>
                 {NoResi}

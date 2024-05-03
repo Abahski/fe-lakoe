@@ -24,6 +24,7 @@ const ButtonCheckKurir = () => {
             multiple
             id="checkboxes-tags-demo"
             options={Kurir}
+            size='small'
             disableCloseOnSelect
             getOptionLabel={(option) => option.title}
             renderOption={(props, option, { selected }) => (

@@ -12,7 +12,7 @@ const Search = () => {
         <Box sx={{ '& > :not(style)': { m: 1 } }}>
             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                 <ContentPasteSearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                <TextField id="input-with-sx" label="Cari Pesanan" variant="standard" />
+                <TextField id="input-with-sx" label="Cari Pesanan" size='small' variant="standard" />
             </Box>
         </Box>
     )

@@ -95,7 +95,7 @@ const InformasiToko = () => {
               }}
               id="fileInput"
             />
-<
+
             <Box
               sx={{
                 border: "1px solid",

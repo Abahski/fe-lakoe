@@ -66,7 +66,7 @@ const Tabs = () => {
 
     const filterActive = items.filter(item => item.status === "active");
     const filterNonActive = items.filter(item => item.status === "non-active");
-<
+
     // close tab
 
 

@@ -36,10 +36,7 @@ const CardProduk: React.FC<CardProdukProps> = ({ items }) => {
     };
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-    const [isToggled, setIsToggled] = useState(false);
-    const handleToggle = () => {
-      setIsToggled((prevIsToggled: boolean) => !prevIsToggled);
-    };
+    
     return (
         <Box>
             <Box sx={{ minWidth: 275 }}>

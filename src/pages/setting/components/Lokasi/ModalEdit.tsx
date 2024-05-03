@@ -43,7 +43,9 @@ export default function ButtonTombolLEdit() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+
+        <Box sx={style} borderRadius={2}>
+
           <Typography
             sx={{ fontWeight: "bold" }}
             id="modal-modal-title"
@@ -107,7 +109,9 @@ export default function ButtonTombolLEdit() {
                 }}
               />
             </Box>
-            <Box display={"flex"} justifyContent={"flex-end"} gap={"10px"}>
+
+            <Box display={"flex"} mt={2} justifyContent={"flex-end"} gap={"10px"}>
+
               <Button
                 sx={{
                   my: 1,
@@ -117,6 +121,9 @@ export default function ButtonTombolLEdit() {
                   boxSizing: "border-box",
                   borderRadius: "15px",
                 }}
+
+                onClick={handleClose}
+
               >
                 Batal
               </Button>

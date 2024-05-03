@@ -8,6 +8,10 @@ import {
 } from "@mui/material";
 import PhotoIcon from "@mui/icons-material/Photo";
 
+import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
+
+
+
 const InformasiToko = () => {
   return (
     <>
@@ -15,9 +19,11 @@ const InformasiToko = () => {
       <form action="">
         <Box display={"flex"} gap={2}>
           <Box display={"flex"} flexDirection={"column"} width={"50%"}>
-            <FormLabel sx={{ mt: 2 }}>Slogan</FormLabel>
+
+            <FormLabel sx={{ mt: 2, fontWeight: "bold", color: "black" }}>Slogan</FormLabel>
             <input
-              placeholder="Slogan"
+              placeholder="Buat slogan untuk toko"
+
               type="text"
               style={{
                 width: "100%",
@@ -28,9 +34,11 @@ const InformasiToko = () => {
                 border: "1px solid gray",
               }}
             ></input>
-            <FormLabel sx={{ mt: 2 }}>Nama Toko</FormLabel>
+
+            <FormLabel sx={{ mt: 2, fontWeight: "bold", color: "black" }}>Nama Toko</FormLabel>
             <input
-              placeholder="Nama Toko"
+              value="Fesyen Store"
+
               type="text"
               style={{
                 width: "100%",
@@ -42,7 +50,9 @@ const InformasiToko = () => {
             ></input>
           </Box>
           <Box display={"flex"} flexDirection={"column"} width={"50%"}>
-            <FormLabel sx={{ mt: 2 }}>Deskripsi</FormLabel>
+
+            <FormLabel sx={{ mt: 2, fontWeight: "bold", color: "black" }}>Deskripsi</FormLabel>
+
             <textarea
               name=""
               id=""
@@ -73,7 +83,9 @@ const InformasiToko = () => {
           </Button>
         </Box>
         <Box>
-          <FormLabel sx={{ fontWeight: "bold" }}>Logo Toko</FormLabel>
+
+          <FormLabel sx={{ fontWeight: "bold", color: "black" }}>Logo Toko</FormLabel>
+
           <Box display="flex" alignItems="center" mt={2}>
             <Input
               type="file"
@@ -83,21 +95,25 @@ const InformasiToko = () => {
               }}
               id="fileInput"
             />
-            <label htmlFor="fileInput" style={{ cursor: "pointer" }}>
-              <Box
-                width={100}
-                height={100}
-                border="1px solid #ccc"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <IconButton component="span">
-                  <PhotoIcon />
-                </IconButton>
-                <Typography>Upload Logo</Typography>
-              </Box>
-            </label>
+<
+            <Box
+              sx={{
+                border: "1px solid",
+                borderColor: "#b1b1b1",
+                borderRadius: "8px",
+                width: "130px",
+                height: "130px",
+                borderStyle: "dashed",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column"
+              }}
+            >
+              <AddPhotoAlternateOutlinedIcon sx={{ color: "#909090" }} />
+              <Typography sx={{ color: "#909090", fontWeight: 400, fontSize: "14px" }}>Upload Logo</Typography>
+            </Box>
+
           </Box>
           <Box fontSize={12} color={"gray"} mt={1}>
             Ukuran optimal 300 x 300 piksel dengan Besar file: Maksimum 10

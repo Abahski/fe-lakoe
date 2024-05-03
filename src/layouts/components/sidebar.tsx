@@ -15,7 +15,27 @@ import { RxAvatar } from "react-icons/rx";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import React, { useState } from "react";
 import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+
+import { Link } from 'react-router-dom';
+
+const Side = [
+  {
+    icon: <MdOutlinePentagon size={20} />,
+    title: "Dashboard",
+    link: "/"
+  },
+  {
+    icon: <IoMdCube size={20} />,
+    title: "Produk",
+    link: "/produk"
+  },
+  {
+    icon: <LiaShoppingBagSolid size={20} />,
+    title: "Pesanan",
+    link: "/pesanan"
+  }
+]
+
 const Sidebar = () => {
   const [open, setOpen] = React.useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -29,6 +49,24 @@ const Sidebar = () => {
     setOpen(!open);
   };
   return (
+
+    <Box display={'flex'}
+      flexDirection={'column'}
+      justifyContent={'space-between'}
+      position={"fixed"}
+      height={"100vh"}
+      py={4}
+      pl={4}
+    >
+      <Box display={'flex'} flexDirection={'column'} gap={2} >
+        {Side.map((item, index) => (
+          <Link to={item.link} key={index} style={{ textDecoration: "none", color: "black" }}>
+            <Typography display={'flex'} gap={1} sx={{ fontWeight: '500' }}>
+              {item.icon} {item.title}
+            </Typography>
+          </Link>
+        ))}
+=
     <Box
       display={"flex"}
       flexDirection={"column"}
@@ -48,6 +86,7 @@ const Sidebar = () => {
         <Typography display={"flex"} gap={1} sx={{ fontWeight: "500" }}>
           <LiaShoppingBagSolid size={20} /> Pesanan
         </Typography>
+
         <Typography>
           <Box
             display={"flex"}
@@ -73,8 +112,10 @@ const Sidebar = () => {
                   color: isClicked
                     ? "#0086b4"
                     : "gray" && isHovered
-                    ? "#0086b4"
-                    : "gray",
+
+                      ? "#0086b4"
+                      : "gray",
+
                   letterSpacing: "1px",
                   transition: "color 0.3s",
                 }}
@@ -112,10 +153,14 @@ const Sidebar = () => {
           </Collapse>
         </Typography>
       </Box>
-      <Box pb={10}>
-        <Typography display={"flex"} gap={1} sx={{ fontWeight: "500" }}>
-          <RxAvatar size={20} /> Profile
-        </Typography>
+<
+      <Box>
+        <Link to={"/profile"} style={{ textDecoration: "none", color: "black" }}>
+          <Typography display={'flex'} gap={1} sx={{ fontWeight: '500' }}>
+            <RxAvatar size={20} /> Profile
+          </Typography>
+        </Link>
+
       </Box>
     </Box>
   );

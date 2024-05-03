@@ -15,6 +15,7 @@ import { RxAvatar } from "react-icons/rx";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import React, { useState } from "react";
 import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
+
 import { Link } from 'react-router-dom';
 
 const Side = [
@@ -48,6 +49,7 @@ const Sidebar = () => {
     setOpen(!open);
   };
   return (
+
     <Box display={'flex'}
       flexDirection={'column'}
       justifyContent={'space-between'}
@@ -64,6 +66,27 @@ const Sidebar = () => {
             </Typography>
           </Link>
         ))}
+=
+    <Box
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"space-between"}
+      height={"100vh"}
+      ml={4}
+      pt={5}
+      position={"fixed"}
+    >
+      <Box display={"flex"} flexDirection={"column"} gap={2}>
+        <Typography display={"flex"} gap={1} sx={{ fontWeight: "500" }}>
+          <MdOutlinePentagon size={20} /> Dashboard
+        </Typography>
+        <Typography display={"flex"} gap={1} sx={{ fontWeight: "500" }}>
+          <IoMdCube size={20} /> Produk
+        </Typography>
+        <Typography display={"flex"} gap={1} sx={{ fontWeight: "500" }}>
+          <LiaShoppingBagSolid size={20} /> Pesanan
+        </Typography>
+
         <Typography>
           <Box
             display={"flex"}
@@ -89,8 +112,10 @@ const Sidebar = () => {
                   color: isClicked
                     ? "#0086b4"
                     : "gray" && isHovered
+
                       ? "#0086b4"
                       : "gray",
+
                   letterSpacing: "1px",
                   transition: "color 0.3s",
                 }}
@@ -128,15 +153,17 @@ const Sidebar = () => {
           </Collapse>
         </Typography>
       </Box>
+<
       <Box>
         <Link to={"/profile"} style={{ textDecoration: "none", color: "black" }}>
           <Typography display={'flex'} gap={1} sx={{ fontWeight: '500' }}>
             <RxAvatar size={20} /> Profile
           </Typography>
         </Link>
+
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

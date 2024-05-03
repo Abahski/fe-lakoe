@@ -1,4 +1,5 @@
 import React from "react";
+
 import ProductForm from "./ProdukForm/ProductForm";
 import ProductDetail from "./ProdukDetail/ProductDetail";
 import { Box } from "@mui/material";
@@ -7,6 +8,7 @@ import ProductPrice from "./ProdukPrice/ProductPrice";
 import ProductManagement from "./ProdukManajemen/ProductManagement";
 import WeightShippingProduct from "./BeratPengiriman/WeightShippingProduct";
 import ButtonSubmitFormProduk from "./ButtonSubmit/Button";
+
 
 const FormProduk = () => {
   return (
@@ -26,7 +28,9 @@ const FormProduk = () => {
       <ProductPrice />
       <ProductManagement />
       <WeightShippingProduct />
+
       <ButtonSubmitFormProduk />
+
     </Box>
   );
 };

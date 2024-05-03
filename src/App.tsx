@@ -1,3 +1,4 @@
+
 import { Box } from '@mui/material'
 import RootLayout from './layouts/RootLayout'
 import Home from './Home'
@@ -7,11 +8,10 @@ import DaftarPesanan from './pages/Pesanan'
 import FormProduk from './pages/FormProduk'
 import FesyenStore from './pages/setting'
 import OrderDetail from './pages/Pesanan/OrderDetail'
-
-
 const App = () => {
 
   return (
+
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
@@ -19,14 +19,7 @@ const App = () => {
           <Route path='/produk' element={<Produk />} />
           <Route path='/produk/formproduk' element={<FormProduk />} />
           <Route path='/pesanan' element={<DaftarPesanan />} />
-          {/* <Route path='/pesanan/detailorder' element={<OrderDetail />} /> */}
           <Route path='/pesanan/detailorder/:status' element={<OrderDetail />} />
-          {/* <Route path='/pesanan/detailorder/:belumdibayar' element={<OrderDetail />} />
-          <Route path='/pesanan/detailorder/:pesananbaru' element={<OrderDetail />} />
-          <Route path='/pesanan/detailorder/:siapdikirim' element={<OrderDetail />} />
-          <Route path='/pesanan/detailorder/:dalampengiriman' element={<OrderDetail />} />
-          <Route path='/pesanan/detailorder/:pesananselesai' element={<OrderDetail />} />
-          <Route path='/pesanan/detailorder/:dibatalkan' element={<OrderDetail />} /> */}
           <Route path="/setting/atur-toko" element={<FesyenStore />} />
 
         </Route>

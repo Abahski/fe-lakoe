@@ -7,7 +7,9 @@ import {
   Typography,
 } from "@mui/material";
 import PhotoIcon from "@mui/icons-material/Photo";
+
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
+
 
 
 const InformasiToko = () => {
@@ -17,9 +19,11 @@ const InformasiToko = () => {
       <form action="">
         <Box display={"flex"} gap={2}>
           <Box display={"flex"} flexDirection={"column"} width={"50%"}>
+
             <FormLabel sx={{ mt: 2, fontWeight: "bold", color: "black" }}>Slogan</FormLabel>
             <input
               placeholder="Buat slogan untuk toko"
+
               type="text"
               style={{
                 width: "100%",
@@ -30,9 +34,11 @@ const InformasiToko = () => {
                 border: "1px solid gray",
               }}
             ></input>
+
             <FormLabel sx={{ mt: 2, fontWeight: "bold", color: "black" }}>Nama Toko</FormLabel>
             <input
               value="Fesyen Store"
+
               type="text"
               style={{
                 width: "100%",
@@ -44,7 +50,9 @@ const InformasiToko = () => {
             ></input>
           </Box>
           <Box display={"flex"} flexDirection={"column"} width={"50%"}>
+
             <FormLabel sx={{ mt: 2, fontWeight: "bold", color: "black" }}>Deskripsi</FormLabel>
+
             <textarea
               name=""
               id=""
@@ -75,7 +83,9 @@ const InformasiToko = () => {
           </Button>
         </Box>
         <Box>
+
           <FormLabel sx={{ fontWeight: "bold", color: "black" }}>Logo Toko</FormLabel>
+
           <Box display="flex" alignItems="center" mt={2}>
             <Input
               type="file"
@@ -85,6 +95,7 @@ const InformasiToko = () => {
               }}
               id="fileInput"
             />
+<
             <Box
               sx={{
                 border: "1px solid",
@@ -102,6 +113,7 @@ const InformasiToko = () => {
               <AddPhotoAlternateOutlinedIcon sx={{ color: "#909090" }} />
               <Typography sx={{ color: "#909090", fontWeight: 400, fontSize: "14px" }}>Upload Logo</Typography>
             </Box>
+
           </Box>
           <Box fontSize={12} color={"gray"} mt={1}>
             Ukuran optimal 300 x 300 piksel dengan Besar file: Maksimum 10

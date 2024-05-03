@@ -3,10 +3,12 @@ import { Box, Checkbox, MenuItem, Tab, TextField, Typography } from '@mui/materi
 import React from 'react'
 import CardProduk from './content';
 import ContentFilter from './contentFilter';
+
 import ContentAktif from './contentActive';
 import ContentNonActive from './contentNonActive';
 
 const items: any[] = [
+
     {
         id: 1,
         image: "https://i.pinimg.com/736x/e9/b2/30/e9b2305bcbfc0920a9c4718050d7f62d.jpg",
@@ -16,6 +18,7 @@ const items: any[] = [
         sku: "0219AKD192",
         varian: "4 varian",
         status: "active",
+
         stok: 20,
         jumlah: 1,
         harga: "190.000"
@@ -54,6 +57,7 @@ const items: any[] = [
 const Tabs = () => {
 
     // open tab
+
     const [value, setValue] = React.useState('1');
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -62,7 +66,9 @@ const Tabs = () => {
 
     const filterActive = items.filter(item => item.status === "active");
     const filterNonActive = items.filter(item => item.status === "non-active");
+<
     // close tab
+
 
     return (
         <Box>
@@ -76,12 +82,15 @@ const Tabs = () => {
                         </TabList>
                     </Box>
                     <ContentFilter />
+
                     <TabPanel value="1">
                         <CardProduk
+
                             items={items}
                         />
                     </TabPanel>
                     <TabPanel value="2">
+
                         {filterActive.length > 0 ? (
                             <CardProduk
                                 items={filterActive}
@@ -98,6 +107,7 @@ const Tabs = () => {
                         ) : (
                             <ContentAktif />
                         )}
+
                     </TabPanel>
                 </TabContext>
             </Box>

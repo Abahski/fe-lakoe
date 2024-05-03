@@ -3,7 +3,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+
 import Maps from "./maps";
+
 
 
 const style = {
@@ -11,7 +13,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+
   width: 700,
+
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
@@ -47,9 +51,11 @@ export default function ButtonTombolLokasi() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+
         <Box sx={style} borderRadius={2} >
           <Typography
             sx={{ fontWeight: 700 }}
+
             id="modal-modal-title"
             variant="h6"
             component="h2"
@@ -58,6 +64,7 @@ export default function ButtonTombolLokasi() {
           </Typography>
           <form action="">
             <Box display={"flex"} flexDirection={"column"}>
+
               <Box display={"flex"} alignItems={"center"} gap={1}>
                 <label style={{ marginBottom: "5px", marginTop: "5px" }}>Tambah Lokasi</label>
                 <Typography color={"red"}>*</Typography>
@@ -132,6 +139,7 @@ export default function ButtonTombolLokasi() {
               </Box>
               <Maps />
             </Box>
+
             <Box display={"flex"} justifyContent={"flex-end"} gap={"10px"}>
               <Button
                 sx={{

@@ -10,7 +10,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+
   width: 500,
+
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -28,7 +30,9 @@ export default function ModalTemplate() {
         <Button
           sx={{
             border: "1px solid gray",
+
             borderRadius: "5px",
+
             boxSizing: "border-box",
             fontWeight: "bold",
             backgroundColor: "#0086b4",
@@ -58,7 +62,9 @@ export default function ModalTemplate() {
             variant="h6"
             component="h2"
           >
+
             <Box fontWeight={"bold"} fontSize={15}>
+
               Buat Template Pesan Baru
             </Box>
             <Box>
@@ -109,7 +115,9 @@ export default function ModalTemplate() {
                   <Button
                     sx={{
                       border: "1px solid gray",
+
                       borderRadius: "5px",
+
                       boxSizing: "border-box",
                       fontWeight: "bold",
                       backgroundColor: "#0086b4",
@@ -126,7 +134,9 @@ export default function ModalTemplate() {
                   <Button
                     sx={{
                       border: "1px solid gray",
+
                       borderRadius: "5px",
+
                       boxSizing: "border-box",
                       fontWeight: "bold",
                       backgroundColor: "#0086b4",
@@ -143,7 +153,9 @@ export default function ModalTemplate() {
                   <Button
                     sx={{
                       border: "1px solid gray",
+
                       borderRadius: "5px",
+
                       boxSizing: "border-box",
                       fontWeight: "bold",
                       backgroundColor: "#0086b4",
@@ -185,7 +197,9 @@ export default function ModalTemplate() {
                       fontSize: "10px",
                       border: "1px solid gray",
                     }}
+
                     onClick={handleClose}
+
                   >
                     Batalkan
                   </Button>

@@ -3,6 +3,7 @@ import React from 'react'
 import CircleIcon from '@mui/icons-material/Circle';
 import PagesIcon from '@mui/icons-material/Pages';
 
+
 export interface ContentMainProps {
     id?: number;
     merek?: string;
@@ -10,6 +11,7 @@ export interface ContentMainProps {
     harga?: string;
     stok?: string;
     sku?: string;
+
     varian?: string;
 }
 
@@ -84,6 +86,7 @@ const ContentMain: React.FC<ContentMainProps> = ({ merek, tipe, harga, stok, sku
                 <Box border={"solid 1px grey"} fontSize={15} borderRadius={100} width={30} height={30} display={"flex"} justifyContent={"center"} fontWeight={"bold"}>
                     ...
                 </Box>
+
             </Box>
         </Box>
     )

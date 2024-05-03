@@ -55,8 +55,11 @@ const ContentFilter: React.FC<{}> = () => {
                     ))}
                 </TextField>
             </Box>
-        </Box>
-    )
-}
 
-export default ContentFilter
+        </Box>
+        {/* End urutan */}
+    </Box>
+  );
+};
+
+export default ContentFilter;

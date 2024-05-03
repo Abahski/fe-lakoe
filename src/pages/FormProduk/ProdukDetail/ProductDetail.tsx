@@ -1,14 +1,49 @@
 import { Box, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
+import { Controller, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
+import useProductDescriptionValidation, {
+  IProductDetailFormValues,
+} from "../../../lib/hooks/validation/useProductDescriptionValidation";
 import FormImage from "./components/FormImage";
 
 const ProductDetail = () => {
   const [description, setDescription] = useState("");
+  const [imagePreview, setImagePreview] = useState(new Array(5).fill(null));
+  const { reset, control, handleSubmit } = useProductDescriptionValidation();
 
   const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.target.value);
   };
+
+  const SubmitHandler: SubmitHandler<IProductDetailFormValues> = (data) => {
+    alert(JSON.stringify(data, null, 2));
+    reset();
+  };
+
+  const handeSubmitError: SubmitErrorHandler<IProductDetailFormValues> = (
+    errors
+  ) => {
+    alert("error" + JSON.stringify(errors, null, 2));
+  };
+
+  const handleImageUpload = (
+    index: number,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = event.target.files?.[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const newImagePreview = [...imagePreview];
+      newImagePreview[index] = reader.result;
+      setImagePreview(newImagePreview);
+    };
+
+    if (files) {
+      reader.readAsDataURL(files);
+    }
+  };
+
 
   return (
     <Box
@@ -61,25 +96,35 @@ const ProductDetail = () => {
             >
               Deskripsi
             </Typography>
-            <TextField
-              multiline
-              rows={8}
-              fullWidth
-              placeholder="Masukkan deskripsi lengkap produk kamu"
-              InputProps={{
-                sx: {
-                  borderRadius: "8px",
-                  height: "200px",
-                  pl: "4px",
-                  pr: "4px",
-                  alignSelf: "flex-start",
-                },
-                inputProps: {
-                  maxLength: 3000,
-                },
-                value: description,
-                onChange: handleDescriptionChange,
-              }}
+            <Controller
+              control={control}
+              name="description"
+              render={({ field, fieldState }) => (
+                <TextField
+                  multiline
+                  rows={8}
+                  fullWidth
+                  placeholder="Masukkan deskripsi lengkap produk kamu"
+                  error={!!fieldState.error}
+                  helperText={fieldState.error?.message}
+                  {...field}
+                  InputProps={{
+                    sx: {
+                      borderRadius: "8px",
+                      height: "200px",
+                      pl: "4px",
+                      pr: "4px",
+                      alignSelf: "flex-start",
+                    },
+                    inputProps: {
+                      maxLength: 3000,
+                    },
+
+                    value: description,
+                    onChange: handleDescriptionChange,
+                  }}
+                />
+              )}
             />
             <Typography
               sx={{

@@ -1,12 +1,15 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { MenuItem } from "@mui/material";
-import FormInput from "./components/FormInput";
+import { Controller, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
+import useProductDetailValidation, {
+  IProductDetailForm,
+} from "../../../lib/hooks/validation/useProductDetailValidation";
 
-function ProductPageField(props: any) {
+function ProductPageField(props: TextFieldProps) {
   return (
     <TextField
       {...props}
@@ -38,15 +41,21 @@ function ProductPageField(props: any) {
 }
 
 const ProductForm = () => {
-  const [pages, setPages] = React.useState("");
   const [selectedCategory, selectedCategorySet] = React.useState("");
+  const { reset, control, handleSubmit } = useProductDetailValidation();
 
-  const handlePageChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setPages(e.currentTarget.value);
+  const SubmitHandler: SubmitHandler<IProductDetailForm> = (data) => {
+    alert(JSON.stringify(data, null, 2));
+    reset();
   };
 
-  const handleCategoryChange = (e: any) => {
-    // const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handeSubmitError: SubmitErrorHandler<IProductDetailForm> = (errors) => {
+    alert("error" + JSON.stringify(errors, null, 2));
+  };
+
+  const handleCategoryChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     selectedCategorySet(e.target.value);
   };
 
@@ -54,7 +63,7 @@ const ProductForm = () => {
     <Box>
       <Box
         sx={{
-          height: "330px",
+          height: "368px",
           borderRadius: "12px",
           backgroundColor: "#ffffff",
         }}
@@ -67,9 +76,9 @@ const ProductForm = () => {
         >
           <Typography
             sx={{
-              fontWeight: "bold",
+              fontWeight: "700",
               color: "#1d1d1d",
-              fontSize: "25px",
+              fontSize: "20px",
               pl: "4px",
               pb: "5px",
               pr: "4px",
@@ -79,9 +88,8 @@ const ProductForm = () => {
             Informasi Produk
           </Typography>
         </Box>
-        <Box sx={{ height: "328px", gap: 2, ml: 2, mr: 2 }}>
-          <form>
-            <FormInput title="Nama Produk" placeholder="Masukkan nama produk" />
+        <Box sx={{ height: "3px", gap: 2, ml: 2, mr: 2 }}>
+          <form onSubmit={handleSubmit(SubmitHandler, handeSubmitError)}>
             <Box
               sx={{
                 display: "flex",
@@ -92,32 +100,37 @@ const ProductForm = () => {
                 mb: 2,
               }}
             >
-              <Box display={"flex"}>
-                <Typography
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    pl: "4px",
-                    pr: "4px",
-                  }}
-                >
-                  URL Halaman Produk
-                </Typography>
-                <Typography color={"red"}>*</Typography>
-              </Box>
-              <ProductPageField
-                fullWidth
-                value={pages}
-                onChange={handlePageChange}
-                placeholder="nama-produk"
-                InputProps={{
-                  sx: {
-                    borderRadius: "8px",
-                    height: "40px",
-                    pl: "4px",
-                    pr: "4px",
-                  },
+              <Typography
+                sx={{
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  pl: "4px",
+                  pr: "4px",
                 }}
+              >
+                Nama Produk*
+              </Typography>
+
+              <Controller
+                control={control}
+                name="nama_produk"
+                render={({ field, fieldState }) => (
+                  <TextField
+                    fullWidth
+                    placeholder="Masukkan nama produk"
+                    InputProps={{
+                      sx: {
+                        borderRadius: "8px",
+                        height: "40px",
+                        pl: "4px",
+                        pr: "4px",
+                      },
+                    }}
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                    {...field}
+                  />
+                )}
               />
             </Box>
             <Box
@@ -130,19 +143,58 @@ const ProductForm = () => {
                 mb: 2,
               }}
             >
-              <Box display={"flex"}>
-                <Typography
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    pl: "4px",
-                    pr: "4px",
-                  }}
-                >
-                  Kategori
-                </Typography>
-                <Typography color={"red"}>*</Typography>
-              </Box>
+              <Typography
+                sx={{
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  pl: "4px",
+                  pr: "4px",
+                }}
+              >
+                URL Halaman Produk*
+              </Typography>
+              <Controller
+                control={control}
+                name="url_produk"
+                render={({ field, fieldState }) => (
+                  <ProductPageField
+                    fullWidth
+                    placeholder="nama-produk"
+                    InputProps={{
+                      sx: {
+                        borderRadius: "8px",
+                        height: "40px",
+                        pl: "4px",
+                        pr: "4px",
+                      },
+                    }}
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                    {...field}
+                  />
+                )}
+              />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 1,
+                paddingLeft: "4px",
+                paddingRight: "4px",
+                mb: 2,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  pl: "4px",
+                  pr: "4px",
+                }}
+              >
+                Kategori*
+              </Typography>
               <TextField
                 select
                 fullWidth
@@ -166,7 +218,7 @@ const ProductForm = () => {
                 <MenuItem value="" disabled>
                   Pilih Label
                 </MenuItem>
-                <MenuItem value="option1">Option1</MenuItem>
+                <MenuItem value="option1">Option 1</MenuItem>
                 <MenuItem value="option2">Option 2</MenuItem>
                 <MenuItem value="option3">Option 3</MenuItem>
               </TextField>

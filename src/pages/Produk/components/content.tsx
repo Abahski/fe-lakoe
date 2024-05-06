@@ -36,7 +36,7 @@ const CardProduk: React.FC<CardProdukProps> = ({ items }) => {
     };
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-    
+
     return (
         <Box>
             <Box sx={{ minWidth: 275 }}>
@@ -87,7 +87,7 @@ const CardProduk: React.FC<CardProdukProps> = ({ items }) => {
                                                     color="primary"
                                                 />
 
- 
+
                                             }
                                             label=""
                                         />
@@ -99,7 +99,7 @@ const CardProduk: React.FC<CardProdukProps> = ({ items }) => {
                 ))}
             </Box>
         </Box>
-       
+
     );
 }
 

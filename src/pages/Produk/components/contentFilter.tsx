@@ -57,9 +57,9 @@ const ContentFilter: React.FC<{}> = () => {
             </Box>
 
         </Box>
-        
-   
-  );
+
+
+    );
 };
 
 export default ContentFilter;

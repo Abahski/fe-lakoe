@@ -1,6 +1,8 @@
-import { Box, Button, Popover, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import ModalAlert from '../../../components/modal/modalAlert'
+import { Box, Button, Typography } from '@mui/material'
+import React from 'react'
+import CircleIcon from '@mui/icons-material/Circle';
+import PagesIcon from '@mui/icons-material/Pages';
+
 
 export interface ContentMainProps {
     id?: number;
@@ -9,113 +11,82 @@ export interface ContentMainProps {
     harga?: string;
     stok?: string;
     sku?: string;
-    varian?: string; 
+
+    varian?: string;
 }
 
-const ContentMain: React.FC<ContentMainProps> = ({  merek, tipe, harga, stok, sku, varian }) => {
-    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-   
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
-    // show modal
-    const [showModal, setShowModal] = useState(false)
-    const handleShowModal = () => {
-        setShowModal(false)
-    }
+const ContentMain: React.FC<ContentMainProps> = ({ merek, tipe, harga, stok, sku, varian }) => {
 
     return (
-        <Box>
+        <Box >
             {varian &&
                 <Button variant="contained" size='small' sx={{ borderRadius: '10px', marginBottom: '10px' }}>{varian}</Button>
-             }
-            <Box display={'flex'} >
-                <Typography 
-                    variant="body1" 
+            }
+            <Box display={"flex"}>
+                <Typography
+                    variant="body1"
                     color="initial"
                     fontWeight={"bold"}>
-                    {merek} - {tipe} 
+                    {merek} - {tipe}
                 </Typography> .
             </Box>
-            <Box display={'flex'}>
-                <Typography 
-                    variant="body2" 
-                    color="initial">
-                    Rp.{ harga}. 
-                </Typography> 
-                <Box sx={{ color: '#b0b0b0'}}>
-                    Stok:{stok} SKU:{sku}
+            <Box display={'flex'} gap={1} alignItems={"center"}>
+                <Typography
+                    variant="body2"
+                    color="initial"
+                    fontWeight={"bold"}>
+                    Rp.{harga}
+                </Typography>
+                <CircleIcon style={{ fontSize: 6, color: '#b0b0b0' }} />
+                <Box sx={{ color: '#b0b0b0' }}>
+                    Stok : {stok}
+                </Box>
+                <CircleIcon style={{ fontSize: 6, color: '#b0b0b0' }} />
+                <Box sx={{ color: '#b0b0b0' }}>
+                    SKU : {sku}
                 </Box>
             </Box>
-            <Box display={'flex'} gap={0.6} mt={2}>
-                <Button
-                    variant="outlined"
-                    sx={{ borderRadius: '20px', fontSize: '10px', color: 'black'}}
-                    size='large'>
-                        <ModalAlert 
-                            openModal={showModal} 
-                            onClose={handleShowModal} 
-                            showModalEdit={false}
-                            showModalDelete={false}
-                            showModalUbahStok={false}
-                            showModalUbahHarga={true}
-                        />
-                </Button>
-                <Button 
-                    variant="outlined"
-                    sx={{ borderRadius: '20px',  fontSize: '10px', color: "black"}}
-                    size='large'>
-                        <ModalAlert 
-                            openModal={showModal} 
-                            onClose={handleShowModal} 
-                            showModalEdit={false}
-                            showModalDelete={false}
-                            showModalUbahStok={true}
-                            showModalUbahHarga={false}
-                        />
-                </Button>
-                <Button 
-                    variant="outlined"
-                    sx={{ borderRadius: '20px',  fontSize: '10px', color: "black"}}
-                    size='large'>
-                        Lihat Halaman
-                </Button>
-                <Button 
-                    aria-describedby={id} 
-                    onClick={handleClick}
-                    variant="outlined"
-                    sx={{ borderRadius: '20px',  fontSize: '10px', fontWeight: 'bold', color: "black" }}>
-                    . . .
-                </Button>
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
-                    >
-                    <Typography sx={{ p: 1, cursor: 'pointer' }}>
-                        <ModalAlert 
-                            openModal={showModal} 
-                            onClose={handleShowModal}
-                            showModalEdit={true}
-                            showModalDelete={true}
-                            showModalUbahStok={false}
-                            showModalUbahHarga={false}
-                        />
+            <Box display={'flex'} gap={1}>
+                <Box
+                    sx={{ borderRadius: '10px', fontSize: '10px', border: "solid grey 1px", fontWeight: "bold", color: 'black' }}
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    px={2}
+                >
+                    <Typography fontSize={13} fontWeight={"bold"}>
+                        Ubah Harga
                     </Typography>
-                </Popover>
+                </Box>
+                <Box
+                    sx={{ borderRadius: '10px', fontSize: '10px', border: "solid grey 1px", fontWeight: "bold", color: 'black' }}
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    px={2}
+                >
+                    <Typography fontSize={13} fontWeight={"bold"}>
+                        Ubah Stok
+                    </Typography>
+                </Box>
+                <Box
+                    sx={{ borderRadius: '10px', fontSize: '10px', border: "solid grey 1px", fontWeight: "bold", color: 'black' }}
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    px={2}
+                    gap={1}
+                >
+                    <PagesIcon />
+                    <Typography fontSize={13} fontWeight={"bold"}>
+                        Lihat Halaman
+                    </Typography>
+                </Box>
+
+                <Box border={"solid 1px grey"} fontSize={15} borderRadius={100} width={30} height={30} display={"flex"} justifyContent={"center"} fontWeight={"bold"}>
+                    ...
+                </Box>
+
             </Box>
         </Box>
     )

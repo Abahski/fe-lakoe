@@ -8,6 +8,9 @@ const TemplatePesan = () => {
     <>
       <Box
         display={"flex"}
+
+        width={700}
+
         justifyContent={"space-between"}
         gap={2}
         my={2}

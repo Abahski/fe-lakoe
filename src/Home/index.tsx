@@ -3,7 +3,7 @@ import Testing from "./Testing"
 const Home = () => {
   return (
     <div>
-      Home
+      Homeeeee
       <Testing />
     </div>
   )

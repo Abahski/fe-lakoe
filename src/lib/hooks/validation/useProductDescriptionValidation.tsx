@@ -6,6 +6,8 @@ export interface IProductDetailFormValues {
     description: string;
 }
 
+
+
 const TestFormSchema = yup.object({
     description: yup
     .string()
@@ -28,3 +30,4 @@ const useProductDescriptionValidation = () => {
 }
 
 export default useProductDescriptionValidation;
+

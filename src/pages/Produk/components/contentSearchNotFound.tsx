@@ -4,21 +4,21 @@ import React from "react"
 import ContentFilter from "./contentFilter"
 import { TabContext, TabList, TabPanel } from "@mui/lab"
 
-const ContentAktif = () => {
-    // open tab
-    const [value, setValue] = React.useState('1');
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue);
-        console.log(event, newValue)
-    };
+const ContentNotSearch = () => {
+     // open tab
+     const [value, setValue] = React.useState('1');
+     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+         setValue(newValue);
+         console.log(event, newValue)
+     };
     return (
         <Box sx={{ minWidth: 275 }}>
-            <Card variant="outlined" sx={{ marginBottom: "10px" }}>
+            <Card variant="outlined"  sx={{ marginBottom: "10px" }}>
                 <React.Fragment>
                     <CardContent>
                         <Box display={"flex"} flexDirection={"row"}>
                             <Box flex={3.4}>
-                                <Header />
+                                <Header/>
                                 <Box sx={{ width: '100%', typography: 'body2' }}>
                                     <TabContext value={value}>
                                         <Box sx={{ borderBottom: 1, borderColor: '#0086b4' }}>
@@ -29,30 +29,30 @@ const ContentAktif = () => {
                                             </TabList>
                                         </Box>
                                         {/* filter */}
-                                        <ContentFilter />
+                                            <ContentFilter />
                                         {/* endFilter */}
                                         <Box display={'flex'}>
                                             {/* quantity */}
-                                            <Box ml={3.5} flex={4.3}>
-                                                <Typography>
-                                                    0 Produk
-                                                </Typography>
-                                            </Box>
+                                                <Box ml={3.5} flex={4.3}>
+                                                    <Typography>
+                                                        0 Produk
+                                                    </Typography>
+                                                </Box>
                                             {/* end quantity */}
                                         </Box>
                                         <TabPanel value="1">
                                             {/* notFound */}
-                                            <Box display={"flex"} justifyContent={"center"}>
+                                           <Box display={"flex"}  justifyContent={"center"}>
                                                 <Box display={"flex"} flexDirection={"column"}>
                                                     <Typography variant="h6" color="initial" >
-                                                        Semua produk telah aktif
+                                                        Opps, produk yang kamu cari tidak ditemukan
                                                     </Typography>
-                                                    <Typography variant="body2" color="initial"
-                                                        sx={{ color: "gray" }}>
-                                                        Kamu bisa buat produk baru dan menyimpannya
-                                                    </Typography>
+                                                    <Typography variant="body2" color="initial" 
+                                                        sx={{ color: "gray"}}>
+                                                        Coba kata kunci lain atau tambahkan produk baru
+                                                </Typography>
                                                 </Box>
-                                            </Box>
+                                           </Box>
                                             {/* end-notFound */}
                                         </TabPanel>
                                         <TabPanel value="2">
@@ -72,4 +72,4 @@ const ContentAktif = () => {
     )
 }
 
-export default ContentAktif
+export default ContentNotSearch

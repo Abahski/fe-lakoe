@@ -16,25 +16,23 @@ const FesyenStore = () => {
   };
   return (
     <>
-      <Box fontWeight={"bold"} fontSize={20} mb={1} mt={1} ml={2}>
-        Fesyen Store
-      </Box>
-      <Box sx={{ width: "100%", typography: "body1" }}>
+      <Box sx={{ backgroundColor: "white", borderRadius: 3 }}>
+        <Box
+          fontWeight={"bold"}
+          sx={{ fontFamily: "poppins" }}
+          fontSize={20}
+          ml={2}
+          pt={2}
+        >
+          Fesyen Store
+        </Box>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
+              <Tab sx={{ fontWeight: "bold" }} label="Informasi" value="1" />
+              <Tab sx={{ fontWeight: "bold" }} label="Lokasi" value="2" />
               <Tab
-                sx={{ fontWeight: "bold", fontFamily: "Plus Jakarta Sans" }}
-                label="Informasi"
-                value="1"
-              />
-              <Tab
-                sx={{ fontWeight: "bold", fontFamily: "Plus Jakarta Sans" }}
-                label="Lokasi"
-                value="2"
-              />
-              <Tab
-                sx={{ fontWeight: "bold", fontFamily: "Plus Jakarta Sans" }}
+                sx={{ fontWeight: "bold" }}
                 label="Template Pesan"
                 value="3"
               />

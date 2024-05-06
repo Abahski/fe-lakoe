@@ -1,13 +1,4 @@
-import {
-  Box,
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  ListSubheader,
-  Typography,
-} from "@mui/material";
+import { Box, Collapse, ListItemText, Typography } from "@mui/material";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlinePentagon } from "react-icons/md";
 import { IoMdCube } from "react-icons/io";
@@ -40,7 +31,18 @@ const Sidebar = () => {
     >
       <Box display={"flex"} flexDirection={"column"} gap={2}>
         <Typography display={"flex"} gap={1} sx={{ fontWeight: "500" }}>
-          <MdOutlinePentagon size={20} /> Dashboard
+          <MdOutlinePentagon size={20} />{" "}
+          <Link
+            to="/dashboard"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              fontWeight: "500",
+              fontSize: "16px",
+            }}
+          >
+            Dashboard
+          </Link>
         </Typography>
         <Typography display={"flex"} gap={1} sx={{ fontWeight: "500" }}>
           <IoMdCube size={20} /> Produk

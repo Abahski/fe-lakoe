@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Produk from "./pages/Produk";
 import FormProduk from "./pages/FormProduk";
 import FesyenStore from "./pages/setting";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/produk" element={<Produk />} />
             <Route path="/form-produk" element={<FormProduk />} />
             <Route path="/setting/atur-toko" element={<FesyenStore />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
       </BrowserRouter>

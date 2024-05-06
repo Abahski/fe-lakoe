@@ -5,6 +5,7 @@ import { CiLocationOn } from "react-icons/ci";
 import ButtonTombolLokasi from "./ModalTambahLokasi";
 import ModalDelete from "./ModalDelete";
 import ButtonTombolLEdit from "./ModalEdit";
+import Maps from "./maps";
 
 const Lokasi = () => {
   return (
@@ -18,8 +19,10 @@ const Lokasi = () => {
         mb={4}
       >
         <Box>
-          <Box fontWeight={"bold"}>lokasi Toko</Box>
-          <Box fontSize={10} color={"gray"}>
+          <Box fontWeight={"bold"} sx={{ fontFamily: "poppins" }}>
+            lokasi Toko
+          </Box>
+          <Box color={"gray"}>
             Alamat ini akan digunakan sebagai alamat pengiriman mu
           </Box>
         </Box>
@@ -35,30 +38,22 @@ const Lokasi = () => {
         p={2}
         mb={1}
       >
-        <Box width={"25%"}>
-          <Box fontSize={10}>Nama Lokasi</Box>
-          <Box fontSize={10}>Alamat</Box>
-          <Box fontSize={10}>Kota / Kecamatan</Box>
-          <Box fontSize={10}>Kode Pos</Box>
-          <Box fontSize={10}>Pinpoint</Box>
+        <Box width={"25%"} fontSize={14} color={"gray"}>
+          <Box>Nama Lokasi</Box>
+          <Box>Alamat</Box>
+          <Box>Kota / Kecamatan</Box>
+          <Box>Kode Pos</Box>
+          <Box>Pinpoint</Box>
         </Box>
-        <Box width={"70%"}>
-          <Box fontSize={10}>Fesyen Store</Box>
-          <Box fontSize={10}>
-            Jl. Elang, No. 4, Sawah lama, Ciputat, Tangerang Selatan
-          </Box>
-          <Box fontSize={10}>Kota Tangerang Selatan, Kec. Ciputat</Box>
-          <Box
-            fontSize={10}
-            display={"flex"}
-            gap={1}
-            alignItems={"center"}
-            color={"blue"}
-          >
+        <Box width={"70%"} fontSize={14} color={"gray"}>
+          <Box>Fesyen Store</Box>
+          <Box>Jl. Elang, No. 4, Sawah lama, Ciputat, Tangerang Selatan</Box>
+          <Box>Kota Tangerang Selatan, Kec. Ciputat</Box>
+          <Box>Tes</Box>
+          <Box display={"flex"} gap={1} alignItems={"center"} color={"blue"}>
             <CiLocationOn />
             <Box>Sudah Ponpoint</Box>
           </Box>
-          <Box fontSize={10}>Tes</Box>
         </Box>
         <Box width={"10%"}>
           <Box
@@ -79,30 +74,22 @@ const Lokasi = () => {
         p={2}
         mb={1}
       >
-        <Box width={"25%"}>
-          <Box fontSize={10}>Nama Lokasi</Box>
-          <Box fontSize={10}>Alamat</Box>
-          <Box fontSize={10}>Kota / Kecamatan</Box>
-          <Box fontSize={10}>Kode Pos</Box>
-          <Box fontSize={10}>Pinpoint</Box>
+        <Box width={"25%"} fontSize={14} color={"gray"}>
+          <Box>Nama Lokasi</Box>
+          <Box>Alamat</Box>
+          <Box>Kota / Kecamatan</Box>
+          <Box>Kode Pos</Box>
+          <Box>Pinpoint</Box>
         </Box>
-        <Box width={"70%"}>
-          <Box fontSize={10}>Fesyen Store</Box>
-          <Box fontSize={10}>
-            Jl. Elang, No. 4, Sawah lama, Ciputat, Tangerang Selatan
-          </Box>
-          <Box fontSize={10}>Kota Tangerang Selatan, Kec. Ciputat</Box>
-          <Box
-            fontSize={10}
-            display={"flex"}
-            gap={1}
-            alignItems={"center"}
-            color={"gray"}
-          >
+        <Box width={"70%"} fontSize={14} color={"gray"}>
+          <Box>Fesyen Store</Box>
+          <Box>Jl. Elang, No. 4, Sawah lama, Ciputat, Tangerang Selatan</Box>
+          <Box>Kota Tangerang Selatan, Kec. Ciputat</Box>
+          <Box>Tes</Box>
+          <Box display={"flex"} gap={1} alignItems={"center"} color={"gray"}>
             <CiLocationOn />
             <Box>Sudah Ponpoint</Box>
           </Box>
-          <Box fontSize={10}>Tes</Box>
         </Box>
         <Box width={"10%"}>
           <Box

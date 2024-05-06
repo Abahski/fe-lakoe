@@ -16,36 +16,32 @@ const FesyenStore = () => {
   };
   return (
     <>
-      <Box display={"flex"} bgcolor={"#ffffff"} flexDirection={"column"}>
-        <Box fontWeight={"bold"} fontSize={20} mb={1} mt={1} ml={2}>
+      <Box sx={{ backgroundColor: "white", borderRadius: 3 }}>
+        <Box
+          fontWeight={"bold"}
+          sx={{ fontFamily: "poppins" }}
+          fontSize={20}
+          ml={2}
+          pt={2}
+        >
           Fesyen Store
         </Box>
-        <Box sx={{ width: "100%", typography: "body1" }}>
-          <TabContext value={value}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <TabList onChange={handleChange} aria-label="lab API tabs example">
-                <Tab
-                  sx={{ fontWeight: "bold", color: "black" }}
-                  label="Informasi"
-                  value="1"
-                />
-                <Tab
-                  sx={{ fontWeight: "bold", color: "black" }}
-                  label="Lokasi"
-                  value="2"
-                />
-                <Tab
-                  sx={{ fontWeight: "bold", color: "black" }}
-                  label="Template Pesan"
-                  value="3"
-                />
-              </TabList>
-            </Box>
-            <TabPanel value="1"><InformasiToko /></TabPanel>
-            <TabPanel value="2"><Lokasi /></TabPanel>
-            <TabPanel value="3"><TemplatePesan /></TabPanel>
-          </TabContext>
-        </Box>
+        <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <TabList onChange={handleChange} aria-label="lab API tabs example">
+              <Tab sx={{ fontWeight: "bold" }} label="Informasi" value="1" />
+              <Tab sx={{ fontWeight: "bold" }} label="Lokasi" value="2" />
+              <Tab
+                sx={{ fontWeight: "bold" }}
+                label="Template Pesan"
+                value="3"
+              />
+            </TabList>
+          </Box>
+          <TabPanel value="1">{value === "1" && <InformasiToko />}</TabPanel>
+          <TabPanel value="2">{value === "2" && <Lokasi />}</TabPanel>
+          <TabPanel value="3">{value === "3" && <TemplatePesan />}</TabPanel>
+        </TabContext>
       </Box>
     </>
   );

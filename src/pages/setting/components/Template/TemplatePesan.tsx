@@ -8,14 +8,18 @@ const TemplatePesan = () => {
     <>
       <Box
         display={"flex"}
+
         width={700}
+
         justifyContent={"space-between"}
         gap={2}
         my={2}
         alignItems={"center"}
       >
         <Box>
-          <Box fontWeight={"bold"}>Template Pesan</Box>
+          <Box fontWeight={"bold"} sx={{ fontFamily: "poppins" }}>
+            Template Pesan
+          </Box>
         </Box>
         <Box>
           <ModalTemplate />
@@ -25,7 +29,7 @@ const TemplatePesan = () => {
       <Box mt={3} border={"1px solid #DDDDDD"} borderRadius={3} p={2} mb={1}>
         <Box display={"flex"} justifyContent={"space-between"}>
           <Box>
-            <Box fontWeight={"bold"} fontSize={13}>
+            <Box fontWeight={"bold"} sx={{ fontFamily: "poppins" }}>
               Pesan Konfirmasi Pesan
             </Box>
           </Box>
@@ -47,18 +51,18 @@ const TemplatePesan = () => {
           </Box>
         </Box>
         <Box mt={1}>
-          <Box fontSize={12} color={"gray"}>
+          <Box fontSize={14} color={"gray"} mb={1}>
             Halo! Terima kasih telah berbelanja di Fesyen Store. Berikut rincian
             pesanan Anda:
           </Box>
           <Box ml={1}>
-            <Box fontSize={12} color={"gray"}>
+            <Box fontSize={14} color={"gray"}>
               • Nama Produk: [Nama Produk]
             </Box>
-            <Box fontSize={12} color={"gray"}>
+            <Box fontSize={14} color={"gray"}>
               • Jumlah: [Jumlah]
             </Box>
-            <Box fontSize={12} color={"gray"}>
+            <Box fontSize={14} color={"gray"}>
               • Total Harga: [Total Harga] Mohon konfirmasi pesanan Anda. Terima
               kasih
             </Box>

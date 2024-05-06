@@ -5,6 +5,11 @@ import {
   TextFieldProps,
   Typography,
 } from "@mui/material";
+import { Controller, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
+import useProductPriceValidation, {
+  IProductPriceForm,
+} from "../../../lib/hooks/validation/useProductPriceValidation";
+import React from "react";
 
 function ProductPriceField(props: TextFieldProps) {
   return (
@@ -68,11 +73,19 @@ function ProductQuantityField(props: TextFieldProps) {
   );
 }
 
-import React from "react";
-
 const ProductPrice = () => {
   const [prices, setPrices] = React.useState("");
   const [quantity, setQuaintity] = React.useState("");
+  const { reset, control, handleSubmit } = useProductPriceValidation();
+
+  const SubmitHandler: SubmitHandler<IProductPriceForm> = (data) => {
+    alert(JSON.stringify(data, null, 2));
+    reset();
+  };
+
+  const handeSubmitError: SubmitErrorHandler<IProductPriceForm> = (errors) => {
+    alert("error" + JSON.stringify(errors, null, 2));
+  };
 
   const handlePricesChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -116,7 +129,7 @@ const ProductPrice = () => {
           </Typography>
         </Box>
         <Box sx={{ height: "328px", gap: 2, ml: 2, mr: 2 }}>
-          <form>
+          <form onSubmit={handleSubmit(SubmitHandler, handeSubmitError)}>
             <Box
               sx={{
                 display: "flex",
@@ -127,35 +140,41 @@ const ProductPrice = () => {
                 mb: 2,
               }}
             >
-              <Box display={"flex"}>
-                <Typography
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    pl: "4px",
-                    pr: "4px",
-                  }}
-                >
-                  Harga
-                </Typography>
-                <Typography color={"red"}>*</Typography>
-              </Box>
-
-              <ProductPriceField
-                fullWidth
-                value={prices}
-                onChange={handlePricesChange}
-                placeholder="Masukkan harga satuan barang"
-                InputProps={{
-                  sx: {
-                    borderRadius: "8px",
-                    height: "40px",
-                    pl: "4px",
-                    pr: "4px",
-                    inputMode: "numeric",
-                    pattern: "[0-9]*",
-                  },
+              <Typography
+                sx={{
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  pl: "4px",
+                  pr: "4px",
                 }}
+              >
+                Harga*
+              </Typography>
+              <Controller
+                control={control}
+                name="price"
+                render={({ field, fieldState }) => (
+                  <ProductPriceField
+                    fullWidth
+                    placeholder="Masukkan harga satuan barang"
+                    InputProps={{
+                      sx: {
+                        borderRadius: "8px",
+                        height: "40px",
+                        pl: "4px",
+                        pr: "4px",
+                        inputMode: "numeric",
+                        pattern: "[0-9]*",
+                      },
+                    }}
+                    {...field}
+                    onChange={(e) =>
+                      field.onChange(e.target.value.replace(/\D/g, ""))
+                    }
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                  />
+                )}
               />
             </Box>
             <Box
@@ -178,19 +197,29 @@ const ProductPrice = () => {
               >
                 Minimal Pembelian
               </Typography>
-              <ProductQuantityField
-                fullWidth
-                value={quantity}
-                onChange={handleQuantityChange}
-                placeholder="1"
-                InputProps={{
-                  sx: {
-                    borderRadius: "18px",
-                    height: "40px",
-                    pl: "4px",
-                    pr: "4px",
-                  },
-                }}
+              <Controller
+                control={control}
+                name="minimum_buy"
+                render={({ field, fieldState }) => (
+                  <ProductQuantityField
+                    fullWidth
+                    placeholder="1"
+                    InputProps={{
+                      sx: {
+                        borderRadius: "8px",
+                        height: "40px",
+                        pl: "4px",
+                        pr: "4px",
+                      },
+                    }}
+                    {...field}
+                    onChange={(e) =>
+                      field.onChange(e.target.value.replace(/\D/g, ""))
+                    }
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                  />
+                )}
               />
             </Box>
           </form>

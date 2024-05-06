@@ -55,8 +55,11 @@ const ContentFilter: React.FC<{}> = () => {
                     ))}
                 </TextField>
             </Box>
-        </Box>
-    )
-}
 
-export default ContentFilter
+        </Box>
+        
+   
+  );
+};
+
+export default ContentFilter;

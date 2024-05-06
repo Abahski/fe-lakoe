@@ -6,6 +6,10 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Controller, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
+import useProductWeightValidation, {
+  IProductWeightForm,
+} from "../../../lib/hooks/validation/useProductWeightValidation";
 
 function ProductWeightField(props: TextFieldProps) {
   return (
@@ -74,6 +78,16 @@ const WeightShippingProduct = () => {
   const [long, setLong] = React.useState("");
   const [width, setWidth] = React.useState("");
   const [height, setHeight] = React.useState("");
+  const { reset, control, handleSubmit } = useProductWeightValidation();
+
+  const SubmitHandler: SubmitHandler<IProductWeightForm> = (data) => {
+    alert(JSON.stringify(data, null, 2));
+    reset();
+  };
+
+  const handeSubmitError: SubmitErrorHandler<IProductWeightForm> = (errors) => {
+    alert("error" + JSON.stringify(errors, null, 2));
+  };
 
   const handleWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setWeight(event.target.value);
@@ -121,7 +135,7 @@ const WeightShippingProduct = () => {
           </Typography>
         </Box>
         <Box sx={{ height: "328px", gap: 2, ml: 2, mr: 2 }}>
-          <form>
+          <form onSubmit={handleSubmit(SubmitHandler, handeSubmitError)}>
             <Box
               sx={{
                 display: "flex",
@@ -132,36 +146,40 @@ const WeightShippingProduct = () => {
                 mb: 2,
               }}
             >
-              <Box width={100}>
-                <Box display={"flex"}>
-                  <Typography
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      pl: "4px",
-                      pr: "4px",
-                      width: "100%",
-                    }}
-                  >
-                    Berat Produk
-                  </Typography>
-                  <Typography color={"red"}>*</Typography>
-                </Box>
-              </Box>
-
-              <ProductWeightField
-                fullWidth
-                value={weight}
-                onChange={handleWeightChange}
-                placeholder="Masukkan berat produk!"
-                InputProps={{
-                  sx: {
-                    borderRadius: "8px",
-                    height: "40px",
-                    pl: "4px",
-                    pr: "4px",
-                  },
+              <Typography
+                sx={{
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  pl: "4px",
+                  pr: "4px",
+                  width: "100%",
                 }}
+              >
+                Berat Produk*
+              </Typography>
+              <Controller
+                control={control}
+                name="weight"
+                render={({ field, fieldState }) => (
+                  <ProductWeightField
+                    fullWidth
+                    placeholder="1"
+                    InputProps={{
+                      sx: {
+                        borderRadius: "8px",
+                        height: "40px",
+                        pl: "4px",
+                        pr: "4px",
+                      },
+                    }}
+                    {...field}
+                    onChange={(e) =>
+                      field.onChange(e.target.value.replace(/\D/g, ""))
+                    }
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                  />
+                )}
               />
             </Box>
           </form>
@@ -193,23 +211,39 @@ const WeightShippingProduct = () => {
                 </Typography>
               </Box>
               <Box sx={{ display: "flex", gap: 2, ml: 1 }}>
-                <form style={{ width: "33%" }}>
-                  <ProductMeasureField
-                    fullWidth
-                    value={long}
-                    onChange={handleLongChange}
-                    placeholder="Panjang"
-                    InputProps={{
-                      sx: {
-                        borderRadius: "8px",
-                        height: "40px",
-                        pl: "4px",
-                        pr: "4px",
-                      },
-                    }}
+                <form
+                  style={{ width: "33%" }}
+                  onSubmit={handleSubmit(SubmitHandler, handeSubmitError)}
+                >
+                  <Controller
+                    control={control}
+                    name="long"
+                    render={({ field, fieldState }) => (
+                      <ProductMeasureField
+                        fullWidth
+                        placeholder="Panjang"
+                        InputProps={{
+                          sx: {
+                            borderRadius: "8px",
+                            height: "40px",
+                            pl: "4px",
+                            pr: "4px",
+                          },
+                        }}
+                        {...field}
+                        onChange={(e) =>
+                          field.onChange(e.target.value.replace(/\D/g, ""))
+                        }
+                        error={!!fieldState.error}
+                        helperText={fieldState.error?.message}
+                      />
+                    )}
                   />
                 </form>
-                <form style={{ width: "33%" }}>
+                <form
+                  style={{ width: "33%" }}
+                  onSubmit={handleSubmit(SubmitHandler, handeSubmitError)}
+                >
                   <Box
                     sx={{
                       display: "flex",
@@ -220,23 +254,36 @@ const WeightShippingProduct = () => {
                       mb: 2,
                     }}
                   >
-                    <ProductMeasureField
-                      fullWidth
-                      value={width}
-                      onChange={handleWidthChange}
-                      placeholder="Lebar"
-                      InputProps={{
-                        sx: {
-                          borderRadius: "8px",
-                          height: "40px",
-                          pl: "4px",
-                          pr: "4px",
-                        },
-                      }}
+                    <Controller
+                      control={control}
+                      name="width"
+                      render={({ field, fieldState }) => (
+                        <ProductMeasureField
+                          fullWidth
+                          placeholder="Lebar"
+                          InputProps={{
+                            sx: {
+                              borderRadius: "8px",
+                              height: "40px",
+                              pl: "4px",
+                              pr: "4px",
+                            },
+                          }}
+                          {...field}
+                          onChange={(e) =>
+                            field.onChange(e.target.value.replace(/\D/g, ""))
+                          }
+                          error={!!fieldState.error}
+                          helperText={fieldState.error?.message}
+                        />
+                      )}
                     />
-                  </Box>
+                  </Box>a
                 </form>
-                <form style={{ width: "33%" }}>
+                <form
+                  style={{ width: "33%" }}
+                  onSubmit={handleSubmit(SubmitHandler, handeSubmitError)}
+                >
                   <Box
                     sx={{
                       display: "flex",
@@ -247,20 +294,29 @@ const WeightShippingProduct = () => {
                       mb: 2,
                     }}
                   >
-                    <ProductMeasureField
-                      fullWidth
-                      value={height}
-                      onChange={handleHeightChange}
-                      placeholder="Tinggi"
-                      InputProps={{
-                        sx: {
-                          borderRadius: "8px",
-                          height: "40px",
-                          pl: "4px",
-                          pr: "4px",
-                          mt: "4px",
-                        },
-                      }}
+                    <Controller
+                      control={control}
+                      name="height"
+                      render={({ field, fieldState }) => (
+                        <ProductMeasureField
+                          fullWidth
+                          placeholder="Tinggi"
+                          InputProps={{
+                            sx: {
+                              borderRadius: "8px",
+                              height: "40px",
+                              pl: "4px",
+                              pr: "4px",
+                            },
+                          }}
+                          {...field}
+                          onChange={(e) =>
+                            field.onChange(e.target.value.replace(/\D/g, ""))
+                          }
+                          error={!!fieldState.error}
+                          helperText={fieldState.error?.message}
+                        />
+                      )}
                     />
                   </Box>
                 </form>

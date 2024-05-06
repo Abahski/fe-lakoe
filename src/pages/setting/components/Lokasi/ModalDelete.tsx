@@ -11,11 +11,13 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+
   width: 500,
   bgcolor: "background.paper",
   border: "1px solid #000",
   boxShadow: "24",
   p: 4
+
 };
 
 export default function ModalDelete() {
@@ -44,7 +46,9 @@ export default function ModalDelete() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+
         <Box sx={style} borderRadius={2}>
+
           <Typography
             display={"flex"}
             justifyContent={"space-between"}
@@ -53,7 +57,9 @@ export default function ModalDelete() {
             variant="h6"
             component="h2"
           >
+
             <Box fontWeight={"bold"} fontSize={15}>
+
               Hapus Alamat
             </Box>
             <Box>
@@ -62,16 +68,20 @@ export default function ModalDelete() {
                 justifyContent={"center"}
                 alignItems={"center"}
               >
+
                 {/* <TiDeleteOutline /> */}
               </Box>
             </Box>
           </Typography>
           <Typography fontSize={13} id="modal-modal-description">
+
             Apakah kamu yakin untuk menghapus{" "}
             <span style={{ color: "black", fontWeight: "bold" }}>Rumah ?</span>{" "}
             kamu tidak akan dapat mengembalikanalamat yang sudah dihapus
           </Typography>
+
           <Box display={"flex"} mt={2} justifyContent={"flex-end"} gap={"10px"}>
+
             <Button
               sx={{
                 my: 1,
@@ -80,10 +90,12 @@ export default function ModalDelete() {
                 padding: "5px 15px",
                 boxSizing: "border-box",
                 borderRadius: "15px",
+
                 border: "solid 1px black",
                 px: 3
               }}
               onClick={handleClose}
+
             >
               Batal
             </Button>

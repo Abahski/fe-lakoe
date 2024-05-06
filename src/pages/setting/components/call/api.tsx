@@ -1,9 +1,33 @@
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-const baseURL = "https://www.emsifa.com/api-wilayah-indonesia/api";
+const useFetchDistricts = (districtCode: any) => {
+  const [districts, setDistricts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export const getProvinces = () => axios.get(`${baseURL}/provinces.json`);
-export const getRegencies = (provinceId: string) =>
-  axios.get(`${baseURL}/regencies/${provinceId}.json`);
-export const getDistricts = (regencyId: string) =>
-  axios.get(`${baseURL}/districts/${regencyId}.json`);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://www.emsifa.com/api-wilayah-indonesia/api/districts/${districtCode}.json`
+        );
+
+        setDistricts(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      setDistricts([]);
+    };
+  }, [districtCode]);
+
+  return { districts, loading };
+};
+
+export default useFetchDistricts;

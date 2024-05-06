@@ -2,7 +2,6 @@ import { Box } from '@mui/material'
 import Sidebar from './components/sidebar'
 import SideContent from './components/sideContent'
 import { Outlet } from 'react-router-dom'
-
 const RootLayout = () => {
     return (
         <>
@@ -22,4 +21,4 @@ const RootLayout = () => {
     )
 }
 
-export default RootLayout
+export default RootLayout;

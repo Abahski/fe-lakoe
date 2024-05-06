@@ -1,8 +1,14 @@
 import React from "react";
-import ProductForm from "./components/ProductForm";
-import ProductDetail from "./components/ProductDetail";
+
+import ProductForm from "./ProdukForm/ProductForm";
+import ProductDetail from "./ProdukDetail/ProductDetail";
 import { Box } from "@mui/material";
-import VariantProduk from "./components/VariantProduk";
+import VariantProduk from "./VarianProduk/VariantProduk";
+import ProductPrice from "./ProdukPrice/ProductPrice";
+import ProductManagement from "./ProdukManajemen/ProductManagement";
+import WeightShippingProduct from "./BeratPengiriman/WeightShippingProduct";
+import ButtonSubmitFormProduk from "./ButtonSubmit/Button";
+
 
 const FormProduk = () => {
   return (
@@ -19,6 +25,12 @@ const FormProduk = () => {
       <ProductForm />
       <ProductDetail />
       <VariantProduk />
+      <ProductPrice />
+      <ProductManagement />
+      <WeightShippingProduct />
+
+      <ButtonSubmitFormProduk />
+
     </Box>
   );
 };

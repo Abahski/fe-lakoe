@@ -1,11 +1,15 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { MenuItem } from "@mui/material";
+import { Controller, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
+import useProductDetailValidation, {
+  IProductDetailForm,
+} from "../../../lib/hooks/validation/useProductDetailValidation";
 
-function ProductPageField(props) {
+function ProductPageField(props: TextFieldProps) {
   return (
     <TextField
       {...props}
@@ -37,14 +41,21 @@ function ProductPageField(props) {
 }
 
 const ProductForm = () => {
-  const [pages, setPages] = React.useState("");
   const [selectedCategory, selectedCategorySet] = React.useState("");
+  const { reset, control, handleSubmit } = useProductDetailValidation();
 
-  const handlePageChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setPages(e.currentTarget.value);
+  const SubmitHandler: SubmitHandler<IProductDetailForm> = (data) => {
+    alert(JSON.stringify(data, null, 2));
+    reset();
   };
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handeSubmitError: SubmitErrorHandler<IProductDetailForm> = (errors) => {
+    alert("error" + JSON.stringify(errors, null, 2));
+  };
+
+  const handleCategoryChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     selectedCategorySet(e.target.value);
   };
 
@@ -52,7 +63,7 @@ const ProductForm = () => {
     <Box>
       <Box
         sx={{
-          height: "330px",
+          height: "368px",
           borderRadius: "12px",
           backgroundColor: "#ffffff",
         }}
@@ -77,8 +88,8 @@ const ProductForm = () => {
             Informasi Produk
           </Typography>
         </Box>
-        <Box sx={{ height: "328px", gap: 2, ml: 2, mr: 2 }}>
-          <form>
+        <Box sx={{ height: "3px", gap: 2, ml: 2, mr: 2 }}>
+          <form onSubmit={handleSubmit(SubmitHandler, handeSubmitError)}>
             <Box
               sx={{
                 display: "flex",
@@ -97,19 +108,29 @@ const ProductForm = () => {
                   pr: "4px",
                 }}
               >
-                Nama Produk
+                Nama Produk*
               </Typography>
-              <TextField
-                fullWidth
-                placeholder="Masukkan nama produk"
-                InputProps={{
-                  sx: {
-                    borderRadius: "8px",
-                    height: "40px",
-                    pl: "4px",
-                    pr: "4px",
-                  },
-                }}
+
+              <Controller
+                control={control}
+                name="nama_produk"
+                render={({ field, fieldState }) => (
+                  <TextField
+                    fullWidth
+                    placeholder="Masukkan nama produk"
+                    InputProps={{
+                      sx: {
+                        borderRadius: "8px",
+                        height: "40px",
+                        pl: "4px",
+                        pr: "4px",
+                      },
+                    }}
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                    {...field}
+                  />
+                )}
               />
             </Box>
             <Box
@@ -130,21 +151,28 @@ const ProductForm = () => {
                   pr: "4px",
                 }}
               >
-                URL Halaman Produk
+                URL Halaman Produk*
               </Typography>
-              <ProductPageField
-                fullWidth
-                value={pages}
-                onChange={handlePageChange}
-                placeholder="nama-produk"
-                InputProps={{
-                  sx: {
-                    borderRadius: "8px",
-                    height: "40px",
-                    pl: "4px",
-                    pr: "4px",
-                  },
-                }}
+              <Controller
+                control={control}
+                name="url_produk"
+                render={({ field, fieldState }) => (
+                  <ProductPageField
+                    fullWidth
+                    placeholder="nama-produk"
+                    InputProps={{
+                      sx: {
+                        borderRadius: "8px",
+                        height: "40px",
+                        pl: "4px",
+                        pr: "4px",
+                      },
+                    }}
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                    {...field}
+                  />
+                )}
               />
             </Box>
             <Box
@@ -165,7 +193,7 @@ const ProductForm = () => {
                   pr: "4px",
                 }}
               >
-                Kategori
+                Kategori*
               </Typography>
               <TextField
                 select

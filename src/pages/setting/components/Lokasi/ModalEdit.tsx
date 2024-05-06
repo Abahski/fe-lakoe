@@ -44,7 +44,9 @@ export default function ButtonTombolLEdit() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+
+        <Box sx={style} borderRadius={2}>
+
           <Typography
             sx={{ fontWeight: "bold" }}
             id="modal-modal-title"
@@ -127,6 +129,9 @@ export default function ButtonTombolLEdit() {
                   boxSizing: "border-box",
                   borderRadius: "15px",
                 }}
+
+                onClick={handleClose}
+
               >
                 Batal
               </Button>

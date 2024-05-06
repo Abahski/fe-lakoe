@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { MdOutlineDeleteSweep } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
-import { CiLocationOn } from "react-icons/ci";
+import { CiLocationOff, CiLocationOn } from "react-icons/ci";
 import ButtonTombolLokasi from "./ModalTambahLokasi";
 import ModalDelete from "./ModalDelete";
 import ButtonTombolLEdit from "./ModalEdit";
@@ -12,8 +12,10 @@ const Lokasi = () => {
     <>
       <Box
         display={"flex"}
+
+        width={750}
         gap={2}
-        width={"100%"}
+
         justifyContent={"space-between"}
         alignItems={"center"}
         mb={4}

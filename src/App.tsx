@@ -6,22 +6,25 @@ import Produk from "./pages/Produk";
 import FormProduk from "./pages/FormProduk";
 import FesyenStore from "./pages/setting";
 import Dashboard from "./pages/Dashboard";
-
+import DaftarPesanan from './pages/Pesanan'
+import OrderDetail from './pages/Pesanan/OrderDetail'
 const App = () => {
-  return (
-    <Box>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<RootLayout />}>
-            <Route index element={<Home />} />
-            <Route path="/produk" element={<Produk />} />
-            <Route path="/form-produk" element={<FormProduk />} />
-            <Route path="/setting/atur-toko" element={<FesyenStore />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Box>
-  );
-};
-export default App;
+return (  
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<Home />} />
+          <Route path='/produk' element={<Produk />} />
+          <Route path='/produk/formproduk' element={<FormProduk />} />
+          <Route path='/pesanan' element={<DaftarPesanan />} />
+          <Route path='/pesanan/detailorder/:status' element={<OrderDetail />} />
+          <Route path="/setting/atur-toko" element={<FesyenStore />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+     )
+  
+}
+export default App
+

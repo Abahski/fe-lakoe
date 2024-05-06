@@ -1,3 +1,4 @@
+import Tambah from "./Tambah"
 import Testing from "./Testing"
 
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
     <div>
       Homeeeee Akuuuuu
       <Testing />
+      <Tambah />
     </div>
   )
 }

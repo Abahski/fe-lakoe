@@ -87,7 +87,7 @@ const InformasiToko = () => {
         Informasi Toko
       </Box>
       <form action="" onSubmit={handleSubmit(handleOnSubmit, handleSubmiError)}>
-        <Box display={"flex"} gap={2}>
+        <Box display={"flex"} gap={2} width={700}>
           <Box
             display={"flex"}
             flexDirection={"column"}
@@ -105,6 +105,7 @@ const InformasiToko = () => {
                     id="outlined-search"
                     label="Nama Toko"
                     type="Nama Toko"
+                    size="small"
                     {...field}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       field.onChange(e);
@@ -129,6 +130,7 @@ const InformasiToko = () => {
                     id="outlined-search"
                     label="Slogan"
                     type="Slogan"
+                    size="small"
                     {...field}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       field.onChange(e);
@@ -152,10 +154,11 @@ const InformasiToko = () => {
                 render={({ field, fieldState }) => (
                   <TextField
                     sx={{ width: "100%" }}
-                    rows={5}
+                    rows={3.5}
                     id="outlined-search"
                     label="Deskripsi"
                     type="Diskripsi"
+                    multiline
                     {...field}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       field.onChange(e);

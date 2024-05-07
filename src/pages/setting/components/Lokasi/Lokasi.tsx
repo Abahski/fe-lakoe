@@ -12,10 +12,8 @@ const Lokasi = () => {
     <>
       <Box
         display={"flex"}
-
-        width={750}
+        width={700}
         gap={2}
-
         justifyContent={"space-between"}
         alignItems={"center"}
         mb={4}

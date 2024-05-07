@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import useFetchDistricts from "../call/api";
 import ModalMaps from "./modalMaps";
+import district from "../../../../mocks/districts.json";
 import {
   useForm,
   Controller,
@@ -13,16 +13,14 @@ import {
 } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-
-  width: 700,
-
+  width: 400,
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 3,
@@ -69,14 +67,10 @@ export default function ButtonTombolLokasi() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { districts } = useFetchDistricts(3202);
   const [searchTerm, setSearchTerm] = React.useState("");
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-  const filteredDistricts = districts.filter((district: any) =>
-    district.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const [districts, setDistricts] = React.useState(district);
+  console.log(districts);
+
   return (
     <div>
       <Button
@@ -102,11 +96,9 @@ export default function ButtonTombolLokasi() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-
-        <Box sx={style} borderRadius={2} >
+        <Box sx={style} borderRadius={2}>
           <Typography
             sx={{ fontWeight: 700 }}
-
             id="modal-modal-title"
             variant="h6"
             component="h2"
@@ -139,39 +131,20 @@ export default function ButtonTombolLokasi() {
               <label style={{ marginTop: "5px", marginBottom: "5px" }}>
                 Kecamatan <span style={{ color: "red" }}>*</span>
               </label>
-              <Controller
-                control={control}
-                name="kecamatan"
-                render={({ field, fieldState }) => (
-                  <TextField
-                    type="text"
-                    placeholder="Cari wilayah..."
-                    size="small"
-                    {...field}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      field.onChange(e);
-                      handleInputChange(e);
-                    }}
-                    value={searchTerm}
-                    error={!!fieldState.error?.message}
-                    helperText={fieldState.error?.message}
-                  />
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                onChange={(event: any, newValue: any) => {
+                  setDistricts(newValue);
+                }}
+                options={district}
+                size="small"
+                getOptionLabel={(option) => option.name}
+                sx={{ width: "100%" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Search Kecamatan " />
                 )}
               />
-              {searchTerm.length > 0 && (
-                <ul
-                  style={{
-                    padding: 0,
-                    marginLeft: "20px",
-                    fontSize: "10px",
-                    color: "gray",
-                  }}
-                >
-                  {filteredDistricts.map((district: any) => (
-                    <li key={district.id}>{district.name}</li>
-                  ))}
-                </ul>
-              )}
               <label style={{ marginTop: "5px", marginBottom: "5px" }}>
                 Kode Pos <span style={{ color: "red" }}>*</span>
               </label>

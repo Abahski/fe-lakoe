@@ -10,12 +10,15 @@ import DaftarPesanan from "./pages/Pesanan";
 import OrderDetail from "./pages/Pesanan/OrderDetail";
 import Login from "./Home/Login";
 import Register from "./Home/Register";
+import Content from "./Home/components/Main/Content";
+import HomePage from "./Home";
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={< Register />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="/produk" element={<Produk />} />

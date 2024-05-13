@@ -20,9 +20,9 @@ const OrderDetail = () => {
                 <IoIosArrowForward size={13} color="grey" />
             </Box>
             <Status status={status} />
-            <Invoice />
+            <Invoice   text=" INV/20230809/MPL/00000239"/>
             <DetailProduk />
-            <OrderDetails />
+            <OrderDetails status={status} resiText="ini resi" addressText="balakang" fullnameText={["Rizki"]} phoneText={["0899999999"]} />
             <PaymentDetails />
         </Box>
     );

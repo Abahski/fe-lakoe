@@ -2,7 +2,7 @@ import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { Facebook, GitHub, Instagram, Twitter } from "@mui/icons-material";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { loginApi } from '../../lib/api/call/auth';
+import { loginApi } from '../../lib/api/call/login';
 // import { useAppDispatch } from '../../store';
 // import { loginAsync } from '../../store/async/auth';
 
@@ -24,9 +24,7 @@ const LoginForm = () => {
         }
     };
 
-    // useEffect(() => {
-    //     handleLogin()
-    // })
+  
 
     return (
         <Box display={'flex'}

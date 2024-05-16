@@ -1,6 +1,4 @@
-import { Box } from "@mui/material";
 import RootLayout from "./layouts/RootLayout";
-import Home from "./Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Produk from "./pages/Produk";
 import FormProduk from "./pages/FormProduk";
@@ -10,7 +8,6 @@ import DaftarPesanan from "./pages/Pesanan";
 import OrderDetail from "./pages/Pesanan/OrderDetail";
 import Login from "./Home/Login";
 import Register from "./Home/Register";
-import Content from "./Home/components/Main/Content";
 import HomePage from "./Home";
 const App = () => {
   return (

@@ -46,7 +46,7 @@ const RegisterForm = () => {
                         <Grid item xs={12}
                             display={'flex'} justifyContent={'flex-end'}>
                             <Typography variant="body2" color="initial ">
-                                <Box onClick={() => navigate('/register')}
+                                <Box onClick={() => navigate('/login')}
                                     sx={{ cursor: 'pointer' }}
                                 >
                                     Login

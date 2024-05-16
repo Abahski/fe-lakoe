@@ -1,10 +1,12 @@
+import { useAppSelector } from "../store"
 import Tambah from "./Tambah"
 import Testing from "./Testing"
 
-const Home = () => {
+const Home = () => { 
+  const user = useAppSelector((state) => state.user)
+  console.log(user)
   return (
     <div>
-      Homeeeee Akuuuuu Baruuuu
       <Testing />
       <Tambah />
     </div>

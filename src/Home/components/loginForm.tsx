@@ -1,12 +1,33 @@
-
-import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { Facebook, GitHub, Instagram, Twitter } from "@mui/icons-material";
 import { useNavigate } from 'react-router-dom';
-
-
+import { useState } from 'react';
+import { loginApi } from '../../lib/api/call/auth';
+// import { useAppDispatch } from '../../store';
+// import { loginAsync } from '../../store/async/auth';
 
 const LoginForm = () => {
-    const navigate = useNavigate()
+    // const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const [formInput, setFormInput] = useState<{ email: string; password: string }>({
+        email: '',
+        password: ''
+    });
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            await loginApi({ email: formInput.email, password: formInput.password })
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    // useEffect(() => {
+    //     handleLogin()
+    // })
+
     return (
         <Box display={'flex'}
             flexDirection={'column'}
@@ -16,40 +37,42 @@ const LoginForm = () => {
                 paddingBottom: 4,
                 marginTop: 4,
             }}
-            my={0.1}>
+            my={0.1} >
             <h2 style={{ marginBottom: 15 }}>Sign in now</h2>
-            <form>
+            <form onSubmit={handleLogin}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
-                            label="First name"
+                            label="Email"
                             size='small'
                             variant="outlined"
                             sx={{
                                 marginBottom: 2,
                                 width: '100%',
                             }}
+                            value={formInput.email}
+                            onChange={(e) => setFormInput({ ...formInput, email: e.target.value })}
                         />
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
-                            label="Last name"
+                            label="Password"
                             size='small'
                             variant="outlined"
                             sx={{
                                 marginBottom: 2,
                                 width: '100%',
                             }}
+                            type="password"
+                            value={formInput.password}
+                            onChange={(e) => setFormInput({ ...formInput, password: e.target.value })}
                         />
                     </Grid>
-                    <Grid item xs={12}
-                        display={'flex'} justifyContent={'flex-end'}>
-                        <Typography variant="body2" color="initial ">
-                            <Box onClick={() => navigate('/register')}
-                                sx={{ cursor: 'pointer' }}
-                            >
+                    <Grid item xs={12} display={'flex'} justifyContent={'flex-end'}>
+                        <Typography variant="body2" color="initial">
+                            <Box onClick={() => navigate('/register')} sx={{ cursor: 'pointer' }}>
                                 Register
                             </Box>
                         </Typography>
@@ -63,6 +86,8 @@ const LoginForm = () => {
                                 marginBottom: 2,
                                 width: '100%',
                             }}
+                            type="submit"
+
                         >
                             Sign In
                         </Button>
@@ -84,7 +109,7 @@ const LoginForm = () => {
                 </Button>
             </Box>
         </Box>
-    )
-}
+    );
+};
 
-export default LoginForm
+export default LoginForm;

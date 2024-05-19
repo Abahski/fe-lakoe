@@ -1,5 +1,5 @@
 import RootLayout from "./layouts/RootLayout";
-import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Produk from "./pages/Produk";
 import FormProduk from "./pages/FormProduk";
 import FesyenStore from "./pages/setting";
@@ -10,7 +10,7 @@ import Login from "./Home/Login";
 import Register from "./Home/Register";
 import HomePage from "./Home";
 import React from "react";
-import { PublicRoute } from "./routeComponents";
+import { PrivateRoute, PublicRoute } from "./routeComponents";
   
 const App: React.FC = () => {
   const token = localStorage.getItem('token');
@@ -29,15 +29,29 @@ const App: React.FC = () => {
           />
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<RootLayout />}>
-            <Route path="/produk" element={<Produk />} />
-            <Route path="/produk/formproduk" element={<FormProduk />} />
-            <Route path="/pesanan" element={<DaftarPesanan />} />
+            <Route 
+              path="/produk" 
+              element={<PrivateRoute element={<Produk />} isAuthenticated={isAuthenticated} />}
+            />
+            <Route 
+              path="/produk/formproduk" 
+              element={<PrivateRoute element={<FormProduk />} isAuthenticated={isAuthenticated} />}
+            />
+            <Route 
+              path="/pesanan" 
+              element={<PrivateRoute element={<DaftarPesanan />} isAuthenticated={isAuthenticated} />}
+            />
             <Route
               path="/pesanan/detailorder/:status"
-              element={<OrderDetail />}
+              element={<PrivateRoute element={<OrderDetail />} isAuthenticated={isAuthenticated} />}
             />
-            <Route path="/setting/atur-toko" element={<FesyenStore />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route 
+              path="/setting/atur-toko" 
+              element={<PrivateRoute element={<FesyenStore />} isAuthenticated={isAuthenticated} />}
+            />
+            <Route 
+              path="/dashboard" 
+              element={<PrivateRoute element={<Dashboard />} isAuthenticated={isAuthenticated} />}/>
           </Route>
         </Routes>
       </BrowserRouter>

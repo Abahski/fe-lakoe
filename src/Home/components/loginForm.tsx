@@ -3,11 +3,11 @@ import { Facebook, GitHub, Instagram, Twitter } from "@mui/icons-material";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { loginApi } from '../../lib/api/call/login';
-// import { useAppDispatch } from '../../store';
-// import { loginAsync } from '../../store/async/auth';
+import { useAppDispatch } from '../../store';
+import { SET_LOGIN } from '../../store/slice/auth';
 
 const LoginForm = () => {
-    // const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [formInput, setFormInput] = useState<{ email: string; password: string }>({
         email: '',
@@ -17,14 +17,15 @@ const LoginForm = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await loginApi({ email: formInput.email, password: formInput.password })
-
+            const res = await loginApi(formInput)
+            const token = res.data;
+            localStorage.setItem("token", token);
+            dispatch(SET_LOGIN({ user: res.data, token }));
+            navigate('/home')
         } catch (error) {
             console.log(error);
         }
     };
-
-  
 
     return (
         <Box display={'flex'}

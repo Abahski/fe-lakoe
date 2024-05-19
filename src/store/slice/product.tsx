@@ -26,5 +26,6 @@ export const productSlice = createSlice({
             state.loading = false;
             state.products = action.payload;
         })
+        
     }
 })

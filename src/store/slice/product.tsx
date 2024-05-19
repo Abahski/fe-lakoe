@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "../../types/app";
 import { productAsync } from "../async/product";
 
@@ -26,6 +26,12 @@ export const productSlice = createSlice({
             state.loading = false;
             state.products = action.payload;
         })
-        
+        builder.addCase(productAsync.rejected, (state, action) => {
+            state.loading = false;
+            state.errorMessage = action.error.message as string;
+            state.products = [];
+        })
     }
 })
+
+export default productSlice.reducer;

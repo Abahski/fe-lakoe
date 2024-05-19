@@ -8,6 +8,7 @@ export const productAsync = createAsyncThunk<IProduct[], void>(
     async(_, thunkApi) => {
         try {
             const res = await getProduct();
+            console.log(res.data.data )
             return res.data.data
         } catch (error) {
             console.error(error)

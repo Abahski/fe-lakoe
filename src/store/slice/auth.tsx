@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { loginAsync } from "../async/auth";
+import { IUser } from "../../types/app";
 
 interface IAuthState {
     token: string;
@@ -20,7 +21,7 @@ export const authSlice = createSlice({
     reducers: {
         SET_LOGIN: (
             state,
-            action: PayloadAction<{ token: string }>
+            action: PayloadAction<{ user: IUser, token: string }>
         ) => {
             state.token = action.payload.token;
         },
@@ -30,7 +31,6 @@ export const authSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        // login process
         builder.addCase(loginAsync.pending, (state) => {
             state.loading = true;
             state.token = "";

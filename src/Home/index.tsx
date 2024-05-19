@@ -28,8 +28,8 @@ const HomePage = () => {
           <Typography fontWeight={"bold"} variant="h3" textAlign={"center"}>
             List Produk
           </Typography>
-          <Box display={"flex"} my={5} px={5} gap={2}>
-              <ProductIndex products={products} />
+          <Box display={"flex"}my={5} px={5} gap={2}>
+                <ProductIndex products={products} />
           </Box>
         </Box>
       </Box>

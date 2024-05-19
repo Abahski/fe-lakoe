@@ -1,5 +1,5 @@
 import RootLayout from "./layouts/RootLayout";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Produk from "./pages/Produk";
 import FormProduk from "./pages/FormProduk";
 import FesyenStore from "./pages/setting";
@@ -9,13 +9,24 @@ import OrderDetail from "./pages/Pesanan/OrderDetail";
 import Login from "./Home/Login";
 import Register from "./Home/Register";
 import HomePage from "./Home";
+import React from "react";
+import { PublicRoute } from "./routeComponents";
   
 const App: React.FC = () => {
+  const token = localStorage.getItem('token');
+  const isAuthenticated = token ? true : false;
+
   return (
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={<PublicRoute element={<Login />} isAuthenticated={isAuthenticated} />}
+          />
+          <Route 
+            path="/register" 
+            element={<PublicRoute element={<Register />} isAuthenticated={isAuthenticated} />}
+          />
           <Route path="/home" element={<HomePage />} />
           <Route path="/" element={<RootLayout />}>
             <Route path="/produk" element={<Produk />} />

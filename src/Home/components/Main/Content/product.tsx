@@ -11,8 +11,8 @@ interface ProductIndexProps {
 
 const ProductIndex:React.FC<ProductIndexProps>  = ({ products }) => {
     return (
-        <Box display={'flex'} gap={2} >
-            <Box>
+        <Box>
+            <Box display={'flex'} justifyContent={"center"} flexDirection={'row'} gap={2}>
                 {products.map((product) => (
                     <Card sx={{ maxWidth: 380, borderRadius: "18px" }}>
                         <CardMedia
@@ -35,10 +35,10 @@ const ProductIndex:React.FC<ProductIndexProps>  = ({ products }) => {
                             </Box>
                             <Box mt={1}>
                                 <Typography variant="subtitle2" sx={{ fontWeight: "bolder" }} display="block" gutterBottom>
-                                    {product.name}
+                                    {product.name} - {product.size} {product.attachments}
                                 </Typography>
                                 <Typography mt={1} variant='body2'>
-                                    The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer,
+                                    {product.description}
                                 </Typography>
                             </Box>
                         </CardContent>

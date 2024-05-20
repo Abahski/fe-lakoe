@@ -14,4 +14,4 @@ export const productAsync = createAsyncThunk<IProduct[], void>(
             return thunkApi.rejectWithValue((error as Error).message)
         }
     }
-)
+)   

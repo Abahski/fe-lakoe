@@ -54,3 +54,19 @@ export interface ICarts {
   user_id: number;
   store_id: number;
 }
+
+export interface IStore {
+  name: string;
+  slogan: string;
+  description: string;
+  domain: string;
+  logo_attachment: string;
+  banner_attachment: string;
+}
+
+export interface ICourier {
+  courier_code: string;
+  courier_service_name: string;
+  courier_service_code: string;
+  price: number;
+}

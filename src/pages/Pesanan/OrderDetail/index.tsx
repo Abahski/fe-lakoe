@@ -6,8 +6,18 @@ import DetailProduk from "./component/detailProduk";
 import OrderDetails from "./component/orderDetails";
 import PaymentDetails from "./component/paymentDetails";
 import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../store";
+import { useEffect } from "react";
+import { getStoreAsync } from "../../../store/async/store";
 
 const OrderDetail = () => {
+    const { stores } = useAppSelector((state) => state)
+    console.log(stores, 'test')
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(getStoreAsync())
+    }, [])
     const { status } = useParams()
     return (
         <Box

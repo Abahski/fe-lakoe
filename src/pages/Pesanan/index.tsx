@@ -2,21 +2,31 @@ import { Box, Typography } from '@mui/material'
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Checkbox from '@mui/material/Checkbox';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
+// import Checkbox from '@mui/material/Checkbox';
+// import TextField from '@mui/material/TextField';
+// import Autocomplete from '@mui/material/Autocomplete';
+// import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+// import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import Search from './components/Search';
 import ButtonCheckKurir from './components/ButtonCheckKurir';
 import ButtonCheckUrutkan from './components/ButtonCheckUrutkan';
 import CardPesanan from './CardPesanan/CardPesanan';
 import Count from './components/Count';
-
+import { useAppDispatch, useAppSelector } from '../../store';
+import { getOrderAsync } from '../../store/async/order';
+import { useEffect } from 'react';
+import { getCouriersAsync } from '../../store/async/courier';
 
 
 const DaftarPesanan = () => {
     const [value, setValue] = React.useState(0);
+    const { courier } = useAppSelector((state) => state)
+    console.log(courier, 'testdoang ')
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(getCouriersAsync())
+    }, [])
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);

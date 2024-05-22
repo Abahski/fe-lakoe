@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { loginApi } from "../../lib/api/call/login";
 import { SET_LOGIN } from "../slice/auth";
+import { getProfile } from "../../lib/api/call/profile";
 
 export const loginAsync = createAsyncThunk(
     "auth/login",
@@ -17,3 +18,15 @@ export const loginAsync = createAsyncThunk(
         }
     }
 );
+
+export const getProfileAsync = createAsyncThunk(
+    "getProfiles",
+    async(token: string) => {
+        try {
+            const { data } = await getProfile(token)
+            return data.data
+        } catch (error) {
+            console.log(error);
+        }
+    }
+)

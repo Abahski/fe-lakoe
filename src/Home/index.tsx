@@ -8,10 +8,13 @@ import ProductIndex from "./components/Main/Content/product";
 import { useAppDispatch, useAppSelector } from "../store";
 import { useEffect } from "react";
 import { productAsync } from "../store/async/product";
+import CategoryList from "./components/Main/Category/categoryList";
 
 const HomePage = () => {
-  const { products } = useAppSelector((state) => state.product);
   const  dispatch = useAppDispatch();
+  const { products } = useAppSelector((state) => state.product);
+  const auth  = useAppSelector((state) => state.auth)
+  console.log(!auth.user, "non auth")
   useEffect(() => {
     dispatch(productAsync())
   },[dispatch])
@@ -28,8 +31,9 @@ const HomePage = () => {
           <Typography fontWeight={"bold"} variant="h3" textAlign={"center"}>
             List Produk
           </Typography>
+          <CategoryList />
           <Box display={"flex"}my={5} px={5} gap={2}>
-                <ProductIndex products={products} />
+              <ProductIndex products={products}/>
           </Box>
         </Box>
       </Box>

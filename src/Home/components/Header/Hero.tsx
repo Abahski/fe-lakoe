@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import Navbar from "./Navbar";
 
 const Hero = () => {
   return (
@@ -22,6 +22,7 @@ const Hero = () => {
         height={"100vh"}
         color={"white"}
       >
+        
         <Typography fontWeight={"bold"} fontSize={50}>
           Your story starts with us.
         </Typography>

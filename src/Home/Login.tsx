@@ -12,7 +12,7 @@ const Login = () => {
             <Grid container spacing={3} alignItems="center">
               <Grid item lg={4}>
                 <Card sx={{ backdropFilter: 'blur(30px)', padding: 3, width: "100%" }}>
-                  <LoginForm />
+                  <LoginForm callback={() => {}} />
                 </Card>
               </Grid>
               <Grid item lg={1}></Grid>

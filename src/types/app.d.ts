@@ -9,10 +9,25 @@ export interface IRegister {
   username: string;
 }
 
+export interface IProfile {
+  id: number;
+  fullname?: string;
+  phone_number?: string;
+  location?: string;
+  user: IUser;
+}
+
 export interface IUser {
   id: number;
   username: string;
   email: string;
+  profile: IProfile;
+}
+
+export interface IAuthStatus {
+  username: string;
+  email: string;
+  role_id: number;
 }
 
 export interface IProduct {
@@ -23,4 +38,11 @@ export interface IProduct {
   is_active: boolean;
   minimum_order: number;
   size: string;
+}
+
+export interface ICategory {
+  id?: number;
+  name?: string;
+  children?: ICategory[];
+  children_category?: ICategory[];
 }

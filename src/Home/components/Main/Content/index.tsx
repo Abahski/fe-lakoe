@@ -1,8 +1,6 @@
 import { Box } from '@mui/system'
 import Typography from '@mui/material/Typography'
-import { Button, Card, CardActions, CardContent, CardMedia, CardHeader, Avatar, IconButton } from '@mui/material'
-
-
+import { Button, Card, CardContent, CardMedia } from '@mui/material'
 
 const Content = () => {
     return (

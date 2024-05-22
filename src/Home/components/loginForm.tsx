@@ -5,8 +5,14 @@ import { useState } from 'react';
 import { loginApi } from '../../lib/api/call/login';
 import { useAppDispatch } from '../../store';
 import { SET_LOGIN } from '../../store/slice/auth';
+import { getProfile } from '../../lib/api/call/profile';
 
-const LoginForm = () => {
+
+interface ILoginFormProps {
+    callback: () => void;
+}
+
+const LoginForm:  React.FC<ILoginFormProps> = ({ callback }) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [formInput, setFormInput] = useState<{ email: string; password: string }>({
@@ -16,12 +22,15 @@ const LoginForm = () => {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        try {
+        try { 
             const res = await loginApi(formInput)
             const token = res.data;
+            const resProfile = await getProfile(token);
             localStorage.setItem("token", token);
-            dispatch(SET_LOGIN({ user: res.data, token }));
-            navigate('/home')
+            dispatch(SET_LOGIN({ user: resProfile.data.data, token }));
+            callback();
+        
+            navigate('/home');
         } catch (error) {
             console.log(error);
         }

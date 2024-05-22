@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "../../types/app";
 import { productAsync } from "../async/product";
 
-interface IInitialState {
+interface IProductState {
     products: IProduct[]
     loading: boolean;
     errorMessage: string;
 }
 
-const initialState: IInitialState = {
+const initialState: IProductState = {
     products: [],
     loading: false,
     errorMessage: ""

@@ -1,4 +1,3 @@
-import React from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import { Box, Typography } from "@mui/material";
 

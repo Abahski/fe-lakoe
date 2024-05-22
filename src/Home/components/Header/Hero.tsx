@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import Navbar from "./Navbar";
 
 const Hero = () => {
   return (
